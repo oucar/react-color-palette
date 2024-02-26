@@ -1,11 +1,12 @@
-function App() {
+import Palette from "./features/Palette";
+import { palettes } from "./app/common/seedColors";
 
+function App() {
   return (
     <>
-      <h1>React 18</h1>
-      <p>React 18 is here!</p>
+      <Palette {...palettes[2]} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
