@@ -1,5 +1,7 @@
 import Palette from "./features/Palette";
 import { palettes } from "./app/common/seedColors";
+// import "./App.scss"
+
 
 function App() {
   return (
