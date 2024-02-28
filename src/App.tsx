@@ -4,11 +4,11 @@ import { generatePalette } from "./app/common/colorHelpers";
 
 
 function App() {
-  console.log(generatePalette(palettes[2] as any));
+  console.log(generatePalette(palettes[4]));
 
   return (
     <>
-      <Palette {...palettes[2]} />
+        <Palette palette={generatePalette(palettes[4])} />
     </>
   );
 }
