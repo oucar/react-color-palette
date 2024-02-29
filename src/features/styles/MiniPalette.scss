@@ -1,4 +1,4 @@
-.root {
+.miniPaletteRoot {
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
@@ -11,11 +11,15 @@
     }
   }
   
-  .colors {
-    background-color: grey;
+  .miniPaletteColors {
+    background-color: "#dae1e4";
+    height: "150px";
+    width: "100%";
+    border-radius: "5px";
+    overflow: hidden;
   }
   
-  .title {
+  .miniPaletteTitle {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,8 +30,17 @@
     position: relative;
   }
   
-  .emoji {
+  .miniPalettEmoji {
     margin-left: 0.5rem;
     font-size: 1.5rem;
+  }
+
+  .miniColor {
+    height: "25%";
+    width: "20%";
+    display: inline-block;
+    margin: "0 auto";
+    position: "relative";
+    margin-bottom: "-3.5px";
   }
   

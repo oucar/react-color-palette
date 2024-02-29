@@ -26,20 +26,18 @@ class Palette extends Component<any, any> {
     ));
 
     return (
-      <>
-        <div className="Palette">
-          <Navbar
-            level={level}
-            changeLevel={this.changeLevel}
-            handleChange={this.changeFormat}
-          />{" "}
-          <div className="Palette-colors">{colorBoxes}</div>
-          <footer className="Palette-footer">
-            {paletteName}
-            <span className="emoji">{emoji}</span>
-          </footer>
-        </div>
-      </>
+      <div className="palette">
+        <Navbar
+          level={level}
+          changeLevel={this.changeLevel}
+          handleChange={this.changeFormat}
+        />{" "}
+        <div className="paletteColors">{colorBoxes}</div>
+        <footer className="paletteFooter">
+          {paletteName}
+          <span className="paletteEmoji">{emoji}</span>
+        </footer>
+      </div>
     );
   }
 }

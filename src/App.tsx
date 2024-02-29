@@ -18,7 +18,6 @@ const PaletteWrapper = () => {
 };
 
 function App() {
-
   return (
     <Routes>
       <Route path="/" element={<PaletteList palettes={palettes} />} />
