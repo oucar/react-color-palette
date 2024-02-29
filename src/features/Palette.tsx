@@ -4,7 +4,7 @@ import "rc-slider/assets/index.css";
 import "./styles/Palette.scss";
 import Navbar from "./Navbar";
 
-export default class Palette extends Component<any, any> {
+class Palette extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = { level: 500, format: "hex" };
@@ -43,3 +43,5 @@ export default class Palette extends Component<any, any> {
     );
   }
 }
+
+export default Palette;

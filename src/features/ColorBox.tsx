@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./styles/ColorBox.scss";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
-export default class ColorBox extends Component<any, any> {
+class ColorBox extends Component<any, any> {
   constructor(props) {
     super(props);
     this.state = { copied: false };
@@ -39,3 +39,5 @@ export default class ColorBox extends Component<any, any> {
     );
   }
 }
+
+export default ColorBox;

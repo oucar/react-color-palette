@@ -1,6 +1,7 @@
 # React + TypeScript + Vite
 
 - Motivation of the project: Combination of materialuicolors.co & flatuicolors.com
+- JSS: CSS in JS
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

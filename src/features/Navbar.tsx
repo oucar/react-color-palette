@@ -4,6 +4,7 @@ import "rc-slider/assets/index.css";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import "./styles/Navbar.scss";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -31,13 +32,12 @@ class Navbar extends Component<NavbarProps, NavbarState> {
     const newFormat = e.target.value;
     const { format } = this.state;
 
-  
     if (newFormat !== format) {
       toast.success(`Format changed to ${newFormat.toUpperCase()}`, {
         position: "bottom-right",
         theme: "light",
       });
-  
+
       this.setState({
         format: newFormat,
         prevFormat: format,
@@ -46,8 +46,6 @@ class Navbar extends Component<NavbarProps, NavbarState> {
       // this should technically never happen
       toast.error(`Format already set to ${newFormat}`);
     }
-
-
   };
 
   render() {
@@ -57,7 +55,7 @@ class Navbar extends Component<NavbarProps, NavbarState> {
     return (
       <header className="Navbar">
         <div className="logo">
-          <a href="#">React Colors</a>
+          <Link to="/">React Colors</Link>
         </div>
         <div className="slider-container">
           <span>Level: {level}</span>
