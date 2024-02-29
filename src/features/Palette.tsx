@@ -18,11 +18,11 @@ export default class Palette extends Component<any, any> {
     this.setState({ format: val });
   }
   render() {
-    const { colors } = this.props.palette;
+    const { colors, paletteName, emoji } = this.props.palette;
     const { level, format } = this.state;
     // colors are being outputted as an object, so we need to convert it to an array
     const colorBoxes = colors[level].map((color) => (
-      <ColorBox background={color[format]} name={color.name} key={color.name} />
+      <ColorBox background={color[format]} name={color.name} key={color.id} />
     ));
 
     return (
@@ -34,7 +34,10 @@ export default class Palette extends Component<any, any> {
             handleChange={this.changeFormat}
           />{" "}
           <div className="Palette-colors">{colorBoxes}</div>
-          {/* footer eventually */}
+          <footer className="Palette-footer">
+            {paletteName}
+            <span className="emoji">{emoji}</span>
+          </footer>
         </div>
       </>
     );
