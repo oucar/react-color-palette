@@ -3,8 +3,10 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import { SelectChangeEvent } from "@mui/material/Select";
 import "./styles/Navbar.scss";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 interface NavbarProps {
   level: number;
@@ -14,20 +16,39 @@ interface NavbarProps {
 
 interface NavbarState {
   format: string;
+  prevFormat: string;
+  open: boolean;
 }
 
 class Navbar extends Component<NavbarProps, NavbarState> {
   constructor(props: NavbarProps) {
     super(props);
-    this.state = { format: "hex" };
-    this.handleChange = this.handleChange.bind(this);
+    this.state = { format: "hex", prevFormat: "hex", open: false };
+    this.handleFormatChange = this.handleFormatChange.bind(this);
   }
 
-  handleChange(e: SelectChangeEvent<string>) {
-    const selectedFormat = e.target.value;
-    this.setState({ format: selectedFormat });
-    this.props.handleChange(selectedFormat);
-  }
+  handleFormatChange = (e) => {
+    const newFormat = e.target.value;
+    const { format } = this.state;
+
+  
+    if (newFormat !== format) {
+      toast.success(`Format changed to ${newFormat.toUpperCase()}`, {
+        position: "bottom-right",
+        theme: "light",
+      });
+  
+      this.setState({
+        format: newFormat,
+        prevFormat: format,
+      });
+    } else {
+      // this should technically never happen
+      toast.error(`Format already set to ${newFormat}`);
+    }
+
+
+  };
 
   render() {
     const { level, changeLevel } = this.props;
@@ -53,12 +74,16 @@ class Navbar extends Component<NavbarProps, NavbarState> {
           </div>
         </div>
         <div className="select-container">
-          <Select value={format} onChange={this.handleChange}>
+          <Select
+            value={format.toLowerCase()}
+            onChange={this.handleFormatChange}
+          >
             <MenuItem value="hex">HEX - #ffffff</MenuItem>
             <MenuItem value="rgb">RGB - rgb(255,255,255)</MenuItem>
             <MenuItem value="rgba">RGBA - rgba(255,255,255, 1.0)</MenuItem>
           </Select>
         </div>
+        <ToastContainer />
       </header>
     );
   }
