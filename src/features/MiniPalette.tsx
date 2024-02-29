@@ -19,6 +19,7 @@ class MiniPalette extends Component<MiniPaletteProps, any> {
     super(props);
     this.state = { paletteName: "", emoji: "", colors: [] };
   }
+
   render() {
     const { paletteName, emoji, colors } = this.props;
     // console.log(this.props);
@@ -28,7 +29,7 @@ class MiniPalette extends Component<MiniPaletteProps, any> {
         className="miniColor"
         style={{ backgroundColor: color.color }}
         key={color.name}
-      />
+      ></div>
     ));
 
     return (

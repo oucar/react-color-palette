@@ -13,9 +13,9 @@
   
   .miniPaletteColors {
     background-color: "#dae1e4";
-    height: "150px";
-    width: "100%";
-    border-radius: "5px";
+    height: 150px;
+    width: 100%;
+    border-radius: 5px;
     overflow: hidden;
   }
   
@@ -36,11 +36,12 @@
   }
 
   .miniColor {
-    height: "25%";
-    width: "20%";
+    background-color: red;
+    height: 25%;
+    width: 20%;
     display: inline-block;
-    margin: "0 auto";
-    position: "relative";
-    margin-bottom: "-3.5px";
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: -3.5px;
   }
   

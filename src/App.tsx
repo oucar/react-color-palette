@@ -20,8 +20,19 @@ const PaletteWrapper = () => {
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<PaletteList palettes={palettes} />} />
+      <Route
+        path="/"
+        Component={(routeProps) => (
+          <PaletteList palettes={palettes} {...routeProps} history={[]} />
+        )}
+      />
+
       <Route path="/palette/:id" element={<PaletteWrapper />} />
+
+      <Route
+        path="/palette/:paletteId/:colorId"
+        Component={() => <h1>SINGLE COLOR PAGE!</h1>}
+      />
     </Routes>
   );
 }
