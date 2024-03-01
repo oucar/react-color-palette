@@ -61,7 +61,6 @@ class Navbar extends Component<NavbarProps, NavbarState> {
 
         {showingAllColors && (
         <div className="slider-container">
-          <span>Level: {level}</span>
           <div className='slider-container'>
             <span>Level: {level}</span>
             <div className='slider'>

@@ -80,8 +80,8 @@ class SingleColorPalette extends Component<SingleColorPaletteProps> {
 
         <div className="paletteColors">
           {colorBoxes}
-          <div className="go-back ColorBox">
-            <Link to={`/palette/${id}`} className="back-button">
+          <div className="colorBox goBack">
+            <Link to={`/palette/${id}`} className="backButton">
               GO BACK
             </Link>
           </div>
