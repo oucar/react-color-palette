@@ -34,6 +34,8 @@ class ColorBox extends Component<any, any> {
             </div>
             <button className="copy-button">Copy</button>
           </div>
+          {/* Individual color palettes */}
+
           <Link to="/" onClick={(e) => e.stopPropagation()}>
             <span className="see-more">More</span>
           </Link>

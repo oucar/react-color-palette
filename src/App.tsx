@@ -20,6 +20,7 @@ const PaletteWrapper = () => {
 function App() {
   return (
     <Routes>
+      {/* Home Route */}
       <Route
         path="/"
         Component={(routeProps) => (
@@ -27,8 +28,10 @@ function App() {
         )}
       />
 
+      {/* Palette Route */}
       <Route path="/palette/:id" element={<PaletteWrapper />} />
 
+      {/* Individual Color Route */}
       <Route
         path="/palette/:paletteId/:colorId"
         Component={() => <h1>SINGLE COLOR PAGE!</h1>}
