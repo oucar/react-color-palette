@@ -45,14 +45,13 @@ class SingleColorPalette extends Component<SingleColorPaletteProps> {
     let allColors = palette.colors;
 
     // Flatten the array of arrays
-    const flattenedColors = Object.values(allColors).flat();
+    const flattenedColors = Object.values(allColors).flat();    
 
     for (let color of flattenedColors) {
-      if (color.name.startsWith(colorToFilterBy)) {
+      if (color.name.toLowerCase().startsWith(colorToFilterBy)) {
         shades.push(color);
       }
     }
-    console.log(shades);
 
     // get rid of the first color (50) and return the rest
     return shades.slice(1);

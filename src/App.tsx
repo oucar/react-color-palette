@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import PaletteList from "./features/PaletteList";
 import SingleColorPalette from "./features/SingleColorPalette";
+import NewPaletteForm from "./features/NewPaletteForm";
 
 const findPalette = (id) => palettes.find((palette) => palette.id === id);
 
@@ -43,6 +44,9 @@ function App() {
         path="/palette/:paletteId/:colorId"
         Component={() => <SingleColorPaletteWrapper />}
       />
+
+      {/* New Palette */}
+      <Route path="/palette/new" Component={() => <NewPaletteForm />} />
     </Routes>
   );
 }

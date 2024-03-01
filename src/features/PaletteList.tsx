@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./styles/PaletteList.scss";
 import MiniPalette from "./MiniPalette";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface Color {
   name: string;
@@ -33,6 +33,7 @@ class PaletteList extends Component<PaletteListProps> {
         <div className="paletteListContainer">
           <nav className="paletteListNav">
             <h1>React Colors</h1>
+            <Link to='/palette/new'>Create Palette</Link>
           </nav>
           <div className="palettes">
             {palettes.map((palette) => (
