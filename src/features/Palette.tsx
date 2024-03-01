@@ -4,6 +4,7 @@ import "rc-slider/assets/index.css";
 import "./styles/Palette.scss";
 import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
+import { toast } from "react-toastify";
 
 class Palette extends Component<any, any> {
   // @@TODO: Add interface for all the props
@@ -13,11 +14,26 @@ class Palette extends Component<any, any> {
     this.changeLevel = this.changeLevel.bind(this);
     this.changeFormat = this.changeFormat.bind(this);
   }
+
   changeLevel(level) {
     this.setState({ level });
   }
-  changeFormat(val) {
-    this.setState({ format: val });
+
+  changeFormat(val: string | number) {
+    let format = this.state.format;
+
+    if (val === format) {
+      toast.error(`Format already set to ${val}`, {
+        position: "bottom-right",
+        theme: "light",
+      });
+    } else {
+      this.setState({ format: val as string });
+      toast.success(`Format changed to ${val}`, {
+        position: "bottom-right",
+        theme: "light",
+      });
+    }
   }
   render() {
     // @@TODO: Add interface for all the props
@@ -41,9 +57,10 @@ class Palette extends Component<any, any> {
         <Navbar
           level={level}
           changeLevel={this.changeLevel}
-          handleChange={this.changeFormat}
+          handleChange={(value) => this.changeFormat(value as string)}
           showingAllColors={this.state.showingAllColors}
         />
+        {/* {format} */}
         <div className="paletteColors">{colorBoxes}</div>
         <PaletteFooter paletteName={paletteName} emoji={emoji} />
       </div>

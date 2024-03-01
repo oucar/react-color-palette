@@ -13,6 +13,7 @@ class ColorBox extends Component<any, any> {
     this.setState({ copied: true }, () => {
       setTimeout(() => this.setState({ copied: false }), 1500);
     });
+    // console.log(this.props.background);
   }
   render() {
     const { name, background, showLink, paletteId, id } = this.props;
@@ -34,8 +35,8 @@ class ColorBox extends Component<any, any> {
             </div>
             <button className="copyButton">Copy</button>
           </div>
-          {/* Individual color palettes */}
 
+          {/* Individual color palettes */}
           {showLink && (
             <Link to={`/palette/${paletteId}/${id}`} onClick={(e) => e.stopPropagation()}>
               <span className="seeMore">More</span>

@@ -12,45 +12,23 @@ import "react-toastify/dist/ReactToastify.css";
 interface NavbarProps {
   level: number;
   changeLevel: (value: number | number[]) => void;
-  handleChange: (value: string) => void;
+  handleChange: (value: string | number) => void;
   showingAllColors: boolean;
 }
 
 interface NavbarState {
   format: string;
-  prevFormat: string;
   open: boolean;
 }
 
 class Navbar extends Component<NavbarProps, NavbarState> {
   constructor(props: NavbarProps) {
     super(props);
-    this.state = { format: "hex", prevFormat: "hex", open: false };
-    this.handleFormatChange = this.handleFormatChange.bind(this);
+    this.state = { format: "hex", open: false };
   }
 
-  handleFormatChange = (e) => {
-    const newFormat = e.target.value;
-    const { format } = this.state;
-
-    if (newFormat !== format) {
-      toast.success(`Format changed to ${newFormat.toUpperCase()}`, {
-        position: "bottom-right",
-        theme: "light",
-      });
-
-      this.setState({
-        format: newFormat,
-        prevFormat: format,
-      });
-    } else {
-      // this should technically never happen
-      toast.error(`Format already set to ${newFormat}`);
-    }
-  };
-
   render() {
-    const { level, changeLevel, showingAllColors } = this.props;
+    const { level, changeLevel, handleChange, showingAllColors } = this.props;
     const { format } = this.state;
 
     return (
@@ -60,33 +38,36 @@ class Navbar extends Component<NavbarProps, NavbarState> {
         </div>
 
         {showingAllColors && (
-        <div className="slider-container">
-          <div className='slider-container'>
-            <span>Level: {level}</span>
-            <div className='slider'>
-              <Slider
-                defaultValue={level}
-                min={100}
-                max={900}
-                step={100}
-                onChangeComplete={changeLevel}
-              />
+          <div className="slider-container">
+            <div className="slider-container">
+              <span>Level: {level}</span>
+              <div className="slider">
+                <Slider
+                  defaultValue={level}
+                  min={100}
+                  max={900}
+                  step={100}
+                  onChangeComplete={changeLevel}
+                />
+              </div>
             </div>
           </div>
-        </div>
         )}
 
         <div className="select-container">
           <Select
-            value={format.toLowerCase()}
-            onChange={this.handleFormatChange}
+            value={format}
+            onChange={(e) => {
+              this.setState({ format: e.target.value });
+              handleChange(e.target.value);
+            }}
           >
             <MenuItem value="hex">HEX - #ffffff</MenuItem>
             <MenuItem value="rgb">RGB - rgb(255,255,255)</MenuItem>
             <MenuItem value="rgba">RGBA - rgba(255,255,255, 1.0)</MenuItem>
           </Select>
         </div>
-        <ToastContainer />
+        <ToastContainer limit={6} />
       </header>
     );
   }
