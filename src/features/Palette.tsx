@@ -18,11 +18,20 @@ class Palette extends Component<any, any> {
     this.setState({ format: val });
   }
   render() {
-    const { colors, paletteName, emoji } = this.props.palette;
+    // @@TODO: Add interface for all the props
+    const { colors, paletteName, id, emoji} = this.props.palette;
     const { level, format } = this.state;
+    
     // colors are being outputted as an object, so we need to convert it to an array
     const colorBoxes = colors[level].map((color) => (
-      <ColorBox background={color[format]} name={color.name} key={color.id} />
+      <ColorBox
+        background={color[format]}
+        name={color.name}
+        key={color.id}
+        id={color.id}
+        paletteId={id}
+        showLink
+      />
     ));
 
     return (

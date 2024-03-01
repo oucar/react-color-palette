@@ -8,6 +8,7 @@ import {
   useParams,
 } from "react-router-dom";
 import PaletteList from "./features/PaletteList";
+import SingleColorPalette from "./features/SingleColorPalette";
 
 const findPalette = (id) => palettes.find((palette) => palette.id === id);
 
@@ -15,6 +16,12 @@ const PaletteWrapper = () => {
   const { id } = useParams();
   const palette = generatePalette(findPalette(id));
   return <Palette palette={palette} />;
+};
+
+const SingleColorPaletteWrapper = () => {
+  const { paletteId, colorId } = useParams();
+  const palette = generatePalette(findPalette(paletteId));
+  return <SingleColorPalette palette={palette} colorId={colorId} />;
 };
 
 function App() {
@@ -34,7 +41,7 @@ function App() {
       {/* Individual Color Route */}
       <Route
         path="/palette/:paletteId/:colorId"
-        Component={() => <h1>SINGLE COLOR PAGE!</h1>}
+        Component={() => <SingleColorPaletteWrapper />}
       />
     </Routes>
   );
