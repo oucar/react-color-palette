@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./styles/MiniPalette.scss";
 import { Link } from "react-router-dom";
@@ -14,6 +14,7 @@ interface MiniPaletteProps {
   colors: Color[];
   handleDelete: (id: string) => void;
   id: string;
+  openDialog: (id: string) => void;
 }
 
 const MiniPalette: React.FC<MiniPaletteProps> = ({
@@ -21,12 +22,13 @@ const MiniPalette: React.FC<MiniPaletteProps> = ({
   emoji,
   colors,
   id,
-  handleDelete,
+  openDialog,
 }) => {
 
-  const deletePalette = (e) => {
+
+  const deletePaletteDialog = (e) => {
     e.stopPropagation();
-    handleDelete(id);
+    openDialog(id);
   };
 
   const miniColorBoxes = colors.map((color) => (
@@ -42,14 +44,15 @@ const MiniPalette: React.FC<MiniPaletteProps> = ({
       <div className="miniPaletteDelete">
         <DeleteIcon
           className="miniPaletteDeleteIcon"
-          onClick={deletePalette}
+          onClick={deletePaletteDialog}
         />
       </div>
+
       <Link to={`/palette/${id}`} key={id}>
-      <div className="miniPaletteColors">{miniColorBoxes}</div>
-      <h5 className="miniPaletteTitle">
-        {paletteName} <span className="miniPaletteEmoji">{emoji}</span>
-      </h5>
+        <div className="miniPaletteColors">{miniColorBoxes}</div>
+        <h5 className="miniPaletteTitle">
+          {paletteName} <span className="miniPaletteEmoji">{emoji}</span>
+        </h5>
       </Link>
     </div>
   );
