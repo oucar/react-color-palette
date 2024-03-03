@@ -9,22 +9,13 @@ import { useNavigate } from "react-router-dom";
 import DraggableColorList from "./DraggableColorList";
 import PaletteFormNav from "./PaletteFormNav";
 import ColorPickerForm from "./ColorPickerForm";
+import { seedColors } from "../app/common/seedColors";
 
 // @TODO: Add the Color interface somewhere else
 interface Color {
   color: string;
   name: string;
 }
-
-// interface NewPaletteFormProps {
-//   savePalette: any;
-// }
-// interface NewPaletteFormState {
-//   open: boolean;
-//   currentColor: string;
-//   colors: Color[];
-//   newName: string;
-// }
 
 function NewPaletteForm(props) {
   const defaultProps = {
@@ -35,7 +26,7 @@ function NewPaletteForm(props) {
   const [open, setOpen] = useState(true);
   const [newPaletteName, setNewPaletteName] = useState("");
   // @@TODO: for testing only. remove later
-  const [colors, setColors] = useState<Color[]>(props.palettes[0].colors);
+  const [colors, setColors] = useState<Color[]>(seedColors[0].colors);
 
   const handleDrawerOpen = () => setOpen(true);
 
@@ -53,7 +44,7 @@ function NewPaletteForm(props) {
     props.savePalette(newPalette);
     console.log(newPalette);
     navigate("/");
-};
+  };
 
   const removeColor = (colorName) => {
     setColors(colors.filter((color) => color.name !== colorName));
@@ -64,10 +55,17 @@ function NewPaletteForm(props) {
   };
 
   const addRandomColor = () => {
-    const allColors = props.palettes.map((p) => p.colors).flat();
-    var rand = Math.floor(Math.random() * allColors.length);
-    const randomColor = allColors[rand];
-    setColors(colors.concat(randomColor));
+    const allColors = seedColors.map((p) => p.colors).flat();
+    let rand;
+    let randomColor;
+    let isDuplicateColor = true;
+    while (isDuplicateColor) {
+      rand = Math.floor(Math.random() * allColors.length);
+      randomColor = allColors[rand];
+      isDuplicateColor = colors.some(
+        (color) => color.name === randomColor.name
+      );
+    }
   };
 
   const paletteIsFull = colors.length >= defaultProps.maxColors;

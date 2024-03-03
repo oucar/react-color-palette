@@ -4,7 +4,6 @@ import { ChromePicker } from "react-color";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import "./styles/ColorPickerForm.scss";
 
-
 interface ColorPickerFormProps {
   addNewColor: (newColor: { color: string; name: string }) => void;
   paletteIsFull: boolean;
@@ -51,7 +50,11 @@ const ColorPickerForm: React.FC<ColorPickerFormProps> = (props) => {
         color={currentColor}
         onChangeComplete={updateCurrentColor}
       />
-      <ValidatorForm autoComplete="off" onSubmit={handleSubmit}>
+      <ValidatorForm
+        autoComplete="off"
+        onSubmit={handleSubmit}
+        instantValidate={false}
+      >
         <TextValidator
           id="filled-error-helper-text"
           label="Color Name"

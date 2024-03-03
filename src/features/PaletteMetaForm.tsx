@@ -48,6 +48,7 @@ const PaletteMetaForm: React.FC<PaletteMetaFormProps> = (props) => {
       emoji: emoji.native,
     };
     handleSubmit(newPalette);
+    setStage("");
   };
 
   const { newPaletteName, setNewPaletteName, handleSubmit, hideForm } = props;

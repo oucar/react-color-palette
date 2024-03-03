@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { PureComponent } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./styles/MiniPalette.scss";
 import { Link } from "react-router-dom";
@@ -58,4 +58,5 @@ const MiniPalette: React.FC<MiniPaletteProps> = ({
   );
 };
 
-export default MiniPalette;
+// React-memo is used to prevent unnecessary re-renders of the MiniPalette component
+export default React.memo(MiniPalette, () => true);
