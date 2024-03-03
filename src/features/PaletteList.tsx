@@ -17,9 +17,13 @@ interface Palette {
 
 interface PaletteListProps {
   palettes: Palette[];
+  deletePalette: (id: string) => void;
 }
 
-const PaletteList: React.FC<PaletteListProps> = ({ palettes }) => {
+const PaletteList: React.FC<PaletteListProps> = ({
+  palettes,
+  deletePalette,
+}) => {
   return (
     <div className="paletteListRoot">
       <div className="paletteListContainer">
@@ -29,9 +33,12 @@ const PaletteList: React.FC<PaletteListProps> = ({ palettes }) => {
         </nav>
         <div className="palettes">
           {palettes.map((palette) => (
-            <Link to={`/palette/${palette.id}`} key={palette.id}>
-              <MiniPalette {...palette} key={palette.id} />
-            </Link>
+            <MiniPalette
+              {...palette}
+              key={palette.id}
+              id={palette.id}
+              handleDelete={() => deletePalette(palette.id)}
+            />
           ))}
         </div>
       </div>

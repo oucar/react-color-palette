@@ -7,11 +7,24 @@ import SingleColorPalette from "./features/SingleColorPalette";
 import { seedColors } from "./app/common/seedColors";
 import { generatePalette } from "./app/common/colorHelpers";
 
+interface Color {
+  name: string;
+  color: string;
+}
+
+interface Palette {
+  paletteName: string;
+  id: string;
+  emoji: string;
+  colors: Color[];
+}
+
+
 export default function App() {
-  const savedPalettes = JSON.parse(
-    window.localStorage.getItem("palettes") || "[]"
-  );
-  const [palettes, setPalettes] = useState(savedPalettes || seedColors);
+  const savedPalettesRaw = window.localStorage.getItem("palettes");
+  const savedPalettes = savedPalettesRaw ? JSON.parse(savedPalettesRaw) : seedColors;
+  
+  const [palettes, setPalettes] = useState<Palette[]>(savedPalettes);
 
   useEffect(() => {
     window.localStorage.setItem("palettes", JSON.stringify(palettes));
@@ -37,10 +50,19 @@ export default function App() {
     setPalettes(palettes.concat(newPalette));
   };
 
+  const deletePalette = (id) => {
+    setPalettes(palettes.filter((palette) => palette.id !== id));
+  };
+
   return (
     <div className="App">
       <Routes>
-        <Route index path="/" element={<PaletteList palettes={palettes} />} />
+        <Route
+          index
+          path="/"
+          element={<PaletteList palettes={palettes} deletePalette={deletePalette} />}
+
+        />
         <Route
           path="/palette/new"
           element={
