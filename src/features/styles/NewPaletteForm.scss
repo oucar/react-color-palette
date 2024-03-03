@@ -39,19 +39,12 @@ $drawerWidth: 400px;
     justify-content: flex-end;
   }
 
-  .drawerHeader {
-    display: flex;
-    align-items: center;
-    padding: 0 8px;
-    justify-content: flex-end;
-  }
-
   .content {
     flex-grow: 1;
     padding: 20px;
     height: calc(100vh - 128px);
     transition: margin 0.3s ease;
-}
+  }
 
     .contentShift {
       transition: margin 0.3s ease-out;
