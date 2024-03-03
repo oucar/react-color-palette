@@ -1,13 +1,65 @@
+$drawerWidth: 400px; 
 
+.newPaletteFormRoot {
+  display: flex;
+  margin-top: 64px;
 
-.drawer {
-    // background-color: pink;
-    height: 100vh;
+  .appBar {
+    transition: margin 0.3s ease, width 0.3s ease;
+  }
 
-    div {
-        // background-color: pink;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+  .appBarShift {
+    width: calc(100% - #{$drawerWidth}px);
+    margin-left: $drawerWidth;
+    transition: margin 0.3s ease, width 0.3s ease-out;
+  }
+
+  .menuButton {
+    margin-left: 12;
+    margin-right: 20;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .drawer {
+    width: $drawerWidth;
+    flex-shrink: 0;
+  }
+
+  .drawerPaper {
+    width: $drawerWidth;
+  }
+
+  .drawerHeader {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    justify-content: flex-end;
+  }
+
+  .drawerHeader {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    justify-content: flex-end;
+  }
+
+  .content {
+    flex-grow: 1;
+    padding: 20px;
+    height: calc(100vh - 128px);
+    transition: margin 0.3s ease;
+}
+
+    .contentShift {
+      transition: margin 0.3s ease-out;
+      margin-left: 0;
+    }
+
+    .drawerTypo {
+        margin-left: 380px;
+        transition: margin 0.3s ease-out;
     }
 }
