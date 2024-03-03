@@ -151,3 +151,30 @@
 .colorBox .darkText {
   color: rgba(0, 0, 0, 0.5);
 }
+
+// Responsive Design
+@media screen and (max-width: 1199.98px) {
+  .colorBox {
+      width: 25%;
+  }
+}
+
+@media screen and (max-width: 991.98px) {
+  .colorBox {
+      width: 50%;
+      height: 20%;
+  }
+  .singleColorPalette .colorBox {
+      height: 20%;
+  }
+}
+
+@media screen and (max-width: 575.98px) {
+  .colorBox {
+      width: 100%;
+      height: 8%;
+  }
+  .singleColorPalette .colorBox {
+      height: 10%;
+  }
+}

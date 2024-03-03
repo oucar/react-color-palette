@@ -2,6 +2,7 @@ import React from "react";
 import "./styles/PaletteList.scss";
 import MiniPalette from "./MiniPalette";
 import { Link } from "react-router-dom";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 interface Color {
   name: string;
@@ -28,19 +29,21 @@ const PaletteList: React.FC<PaletteListProps> = ({
     <div className="paletteListRoot">
       <div className="paletteListContainer">
         <nav className="paletteListNav">
-          <h1>React Colors</h1>
+          <h1 className="paletteListHeading">React Colors</h1>
           <Link to="/palette/new">Create Palette</Link>
         </nav>
-        <div className="palettes">
+        <TransitionGroup className="palettes">
           {palettes.map((palette) => (
-            <MiniPalette
-              {...palette}
-              key={palette.id}
-              id={palette.id}
-              handleDelete={() => deletePalette(palette.id)}
-            />
+            <CSSTransition key={palette.id} timeout={500} classNames="fade">
+              <MiniPalette
+                {...palette}
+                key={palette.id}
+                id={palette.id}
+                handleDelete={deletePalette}
+              />
+            </CSSTransition>
           ))}
-        </div>
+        </TransitionGroup>
       </div>
     </div>
   );

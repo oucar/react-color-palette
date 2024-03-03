@@ -32,10 +32,41 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 30%);
-    grid-gap: 5%;
+    row-gap: 2.5rem;
+    column-gap: 2.5rem;
 
     a {
       text-decoration: none;
     }
   }
   
+
+  // Responsive design
+  @media screen and (max-width: 1550px) {
+    .paletteListContainer {
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 1199.98px) {
+    .paletteListContainer {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 991.98px) {
+    .paletteListContainer {
+        grid-template-columns: repeat(2, 50%);
+        row-gap: 1.5rem;
+        column-gap: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 575.98px) {
+    .paletteListContainer {
+        width: 75%;
+    }
+    .palettes {
+        grid-template-columns: repeat(1, 100%);
+    }
+  }

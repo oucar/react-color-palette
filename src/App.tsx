@@ -6,6 +6,7 @@ import Palette from "./features/Palette";
 import SingleColorPalette from "./features/SingleColorPalette";
 import { seedColors } from "./app/common/seedColors";
 import { generatePalette } from "./app/common/colorHelpers";
+import "./features/styles/App.scss";
 
 interface Color {
   name: string;
