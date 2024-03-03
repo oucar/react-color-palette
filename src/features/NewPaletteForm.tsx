@@ -10,6 +10,7 @@ import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import DraggableColorBox from "./DraggableColorBox";
 import "./styles/NewPaletteForm.scss";
 import { useNavigate } from "react-router-dom";
+import DraggableColorList from "./DraggableColorList";
 
 // @TODO: Add the Color interface somewhere else
 interface Color {
@@ -174,14 +175,11 @@ function NewPaletteForm(props) {
         </Drawer>
         <main className={`content ${open && "contentShift"}`}>
           <div className="drawerHeader" />
-          {colors.map((color) => (
-            <DraggableColorBox
-              key={color.name}
-              color={color.color}
-              name={color.name}
-              handleClick={() => removeColor(color.name)}
-            />
-          ))}
+          <DraggableColorList
+            colors={colors}
+            setColors={setColors}
+            removeColor={removeColor}
+          />
         </main>
       </div>
     </>

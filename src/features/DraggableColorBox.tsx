@@ -6,6 +6,7 @@ interface DraggableColorBoxProps {
   color: string;
   name: string;
   handleClick: any;
+  index: number;
 }
 
 const DraggableColorBox: React.FC<DraggableColorBoxProps> = ({
