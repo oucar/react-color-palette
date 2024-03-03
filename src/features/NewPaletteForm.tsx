@@ -7,7 +7,6 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { ChromePicker, ColorResult } from "react-color";
 import { Typography, AppBar, Toolbar } from "@mui/material";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import DraggableColorBox from "./DraggableColorBox";
 import "./styles/NewPaletteForm.scss";
 import { useNavigate } from "react-router-dom";
 import DraggableColorList from "./DraggableColorList";
