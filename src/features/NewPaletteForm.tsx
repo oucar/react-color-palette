@@ -6,15 +6,22 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { ChromePicker, ColorResult } from "react-color";
 import { Typography, AppBar, Toolbar } from "@mui/material";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import DraggableColorBox from "./DraggableColorBox";
 import "./styles/NewPaletteForm.scss";
 
+// @TODO: Add the Color interface somewhere else
+interface Color {
+  color: string;
+  name: string;
+}
 
 interface NewPaletteFormProps {}
 interface NewPaletteFormState {
   open: boolean;
   currentColor: string;
-  colors: string[];
+  colors: Color[];
+  newName: string;
 }
 
 class NewPaletteForm extends Component<
@@ -26,8 +33,21 @@ class NewPaletteForm extends Component<
     this.state = {
       open: true,
       currentColor: "teal",
-      colors: [],
+      newName: "",
+      colors: [{ color: "blue", name: "blue" }],
     };
+    
+  }
+
+  componentDidMount() {
+    ValidatorForm.addValidationRule("isColorNameUnique", (value) =>
+      this.state.colors.every(
+        ({ name }) => name.toLowerCase() !== value.toLowerCase()
+      )
+    );
+    ValidatorForm.addValidationRule("isColorUnique", (value) =>
+      this.state.colors.every(({ color }) => color !== this.state.currentColor)
+    );
   }
 
   handleDrawerOpen = () => {
@@ -43,9 +63,15 @@ class NewPaletteForm extends Component<
   };
 
   addNewColor = () => {
-    this.setState((prevState) => ({
-      colors: [...prevState.colors, prevState.currentColor],
-    }));
+    const newColor = {
+      color: this.state.currentColor,
+      name: this.state.newName,
+    };
+    this.setState({ colors: [...this.state.colors, newColor], newName: "" });
+  };
+
+  handleChange = (evt) => {
+    this.setState({ newName: evt.target.value });
   };
 
   render() {
@@ -58,7 +84,7 @@ class NewPaletteForm extends Component<
             position="fixed"
             className={`appBar ${open && "appBarShift"}`}
           >
-            <Toolbar >
+            <Toolbar>
               <IconButton
                 color="inherit"
                 aria-label="Open drawer"
@@ -68,7 +94,11 @@ class NewPaletteForm extends Component<
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6" noWrap className={`${open && "drawerTypo"}`}>
+              <Typography
+                variant="h6"
+                noWrap
+                className={`${open && "drawerTypo"}`}
+              >
                 Persistent drawer
               </Typography>
             </Toolbar>
@@ -104,19 +134,32 @@ class NewPaletteForm extends Component<
               color={currentColor}
               onChangeComplete={this.updateCurrentColor}
             />
-            <Button
-              variant="contained"
-              color="primary"
-              style={{ backgroundColor: currentColor }}
-              onClick={this.addNewColor}
-            >
-              Add Color
-            </Button>
+
+            <ValidatorForm onSubmit={this.addNewColor}>
+              <TextValidator
+                value={this.state.newName}
+                onChange={this.handleChange}
+                validators={["required", "isColorNameUnique", "isColorUnique"]}
+                errorMessages={[
+                  "Enter a color name",
+                  "Color name must be unique",
+                  "Color already used!",
+                ]}
+              />
+              <Button
+                variant="contained"
+                type="submit"
+                color="primary"
+                style={{ backgroundColor: this.state.currentColor }}
+              >
+                Add Color
+              </Button>
+            </ValidatorForm>
           </Drawer>
           <main className={`content ${open && "contentShift"}`}>
             <div className="drawerHeader" />
             {colors.map((color) => (
-              <DraggableColorBox key={color} color={color} />
+              <DraggableColorBox color={color.color} name={color.name} />
             ))}
           </main>
         </div>
