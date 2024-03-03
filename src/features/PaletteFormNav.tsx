@@ -1,12 +1,17 @@
-import React, { useEffect, ChangeEvent } from "react";
+import React, { useEffect, ChangeEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { Typography, AppBar, Toolbar } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import "./styles/PaletteFormNav.scss";
+import PaletteMetaForm from "./PaletteMetaForm";
+
+interface Palette {
+  paletteName: string;
+  emoji: string;
+}
 
 interface PaletteFormNavProps {
   palettes: any[];
@@ -14,28 +19,34 @@ interface PaletteFormNavProps {
   handleDrawerOpen: () => void;
   newPaletteName: string;
   setNewPaletteName: React.Dispatch<React.SetStateAction<string>>;
-  handleSubmit: (name: string) => void;
+  handleSubmit: (palette: Palette) => void;
   drawerWidth: number;
 }
 
 const PaletteFormNav: React.FC<PaletteFormNavProps> = (props) => {
-  useEffect(() => {
-    ValidatorForm.addValidationRule("isPaletteNameUnique", (value) => {
-      return props.palettes.every(
-        ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
-      );
-    });
-  }, [props.palettes]);
+  const [formShowing, setFormShowing] = useState(false);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    props.setNewPaletteName(e.target.value);
-  };
+  const showForm = () => setFormShowing(true);
 
-  const { open, handleDrawerOpen, newPaletteName, handleSubmit } = props;
+  const hideForm = () => setFormShowing(false);
+
+  const {
+    open,
+    handleDrawerOpen,
+    newPaletteName,
+    setNewPaletteName,
+    palettes,
+    handleSubmit,
+  } = props;
 
   return (
     <Box className="PaletteFormNav">
-      <AppBar position="fixed" className={`appBar ${open && "appBarShift"}`}>
+      <AppBar
+        className="PFN-appBar"
+        position="fixed"
+        // open={open}
+        color="default"
+      >
         <Toolbar>
           <IconButton
             color="inherit"
@@ -46,35 +57,42 @@ const PaletteFormNav: React.FC<PaletteFormNavProps> = (props) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div" className={`${open && "shiftNavbarText"}`}>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            className={`${open && "shiftNavbarText"}`}
+          >
             Create New Palette
           </Typography>
         </Toolbar>
         <div className="PFNav-navBtns">
-          <ValidatorForm
-            autoComplete="off"
-            onSubmit={() => handleSubmit(newPaletteName)}
-            className="innerForm"
-          >
-            <TextValidator
-              label="Palette Name"
-              value={newPaletteName}
-              name="newPaletteName"
-              onChange={handleChange}
-              validators={["required", "isPaletteNameUnique"]}
-              errorMessages={["Enter a Palette Name", "Name is already taken"]}
-            />
-            <Button variant="contained" color="primary" type="submit">
-              Save Palette
-            </Button>
-          </ValidatorForm>
           <Link to="/">
-            <Button variant="contained" color="secondary">
+            <Button className="button" variant="contained" color="secondary">
               Go Back
             </Button>
           </Link>
+          <Button
+            className="button"
+            variant="contained"
+            color="primary"
+            onClick={showForm}
+          >
+            Save
+          </Button>
         </div>
       </AppBar>
+      {formShowing ? (
+        <PaletteMetaForm
+          palettes={palettes}
+          newPaletteName={newPaletteName}
+          setNewPaletteName={setNewPaletteName}
+          handleSubmit={handleSubmit}
+          hideForm={hideForm}
+        />
+      ) : (
+        ""
+      )}
     </Box>
   );
 };

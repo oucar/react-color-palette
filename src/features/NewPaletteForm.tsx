@@ -47,15 +47,13 @@ function NewPaletteForm(props) {
 
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    const newPalette = {
-      paletteName: newPaletteName,
-      id: newPaletteName.toLowerCase().replace(/ /g, "-"),
-      colors: colors,
-    };
+  const handleSubmit = (newPalette) => {
+    newPalette.id = newPaletteName.toLowerCase().replace(/ /g, "-");
+    newPalette.colors = colors;
     props.savePalette(newPalette);
+    console.log(newPalette);
     navigate("/");
-  };
+};
 
   const removeColor = (colorName) => {
     setColors(colors.filter((color) => color.name !== colorName));

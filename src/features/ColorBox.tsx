@@ -24,8 +24,11 @@ const ColorBox = ({ name, background, showLink, paletteId, id }) => {
   return (
     <CopyToClipboard text={background} onCopy={changeCopyState}>
       <div style={{ background }} className="colorBox">
-        <div style={{ background }} className={`copyOverlay ${copied && "show"}`} />
-        <div className={`copyMsg ${copied && "show"}`}>
+        <div
+          style={{ background }}
+          className={`copyOverlay ${copied ? "show" : ""}`}
+        />
+        <div className={`copyMsg ${copied ? "show" : ""}`}>
           <h1>copied!</h1>
           <p className={isLightColor ? "darkText" : ""}>{background}</p>
         </div>
@@ -33,14 +36,17 @@ const ColorBox = ({ name, background, showLink, paletteId, id }) => {
           <div className="boxContent">
             <span className={isDarkColor ? "lightText" : ""}>{name}</span>
           </div>
-          <button className={`copyButton ${isLightColor && "darkText"}`}>
+          <button className={`copyButton ${isLightColor ? "darkText" : ""}`}>
             Copy
           </button>
         </div>
 
         {/* Individual color palettes */}
         {showLink && (
-          <Link to={`/palette/${paletteId}/${id}`} onClick={(e) => e.stopPropagation()}>
+          <Link
+            to={`/palette/${paletteId}/${id}`}
+            onClick={(e) => e.stopPropagation()}
+          >
             <span className={`seeMore ${isLightColor && "darkText"}`}>
               MORE
             </span>
