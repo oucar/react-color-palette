@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState, createRef } from "react";
 import "./styles/PaletteList.scss";
 import MiniPalette from "./MiniPalette";
 import { Link } from "react-router-dom";
@@ -31,16 +31,9 @@ interface Palette {
 interface PaletteListProps {
   palettes: Palette[];
   deletePalette: (id: string) => void;
-  handleDelete: (id: string) => void;
 }
 
-const PaletteList: React.FC<PaletteListProps> = ({
-  palettes,
-  deletePalette,
-}) => {
-  // https://github.com/reactjs/react-transition-group/issues/668
-  const nodeRef = useRef<HTMLDivElement>(null);
-
+const PaletteList: React.FC<PaletteListProps> = ({ palettes, deletePalette }) => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [deletingId, setDeletingId] = useState("");
 
@@ -69,23 +62,27 @@ const PaletteList: React.FC<PaletteListProps> = ({
           </Link>
         </nav>
         <TransitionGroup className="palettes">
-          {palettes.map((palette) => (
-            <CSSTransition
-              nodeRef={nodeRef}
-              key={palette.id}
-              timeout={500}
-              classNames="fade"
-            >
-              <MiniPalette
-                // nodeRef={nodeRef}
-                {...palette}
+          {palettes.map((palette) => {
+            const itemRef = createRef<HTMLDivElement>();
+            return (
+              <CSSTransition
                 key={palette.id}
-                id={palette.id}
-                openDialog={() => openDialog(palette.id)}
-                handleDelete={() => deletePalette(palette.id)}
-              />
-            </CSSTransition>
-          ))}
+                timeout={500}
+                classNames="fade"
+                nodeRef={itemRef}
+              >
+                <div ref={itemRef}>
+                  <MiniPalette
+                    {...palette}
+                    key={palette.id}
+                    id={palette.id}
+                    openDialog={() => openDialog(palette.id)}
+                    handleDelete={() => deletePalette(palette.id)}
+                  />
+                </div>
+              </CSSTransition>
+            );
+          })}
         </TransitionGroup>
       </div>
       <Dialog open={openDeleteDialog} aria-labelledby="delete-dialog-title">
