@@ -1,58 +1,57 @@
-$drawerWidth: 400px; 
+$drawerWidth: 350px; 
+
+// NewPaletteForm.scss
 
 .newPaletteFormRoot {
   display: flex;
-  margin-top: 64px;
+}
 
-  .appBar {
-    transition: margin 0.3s ease, width 0.3s ease;
-  }
+.drawer {
+  width: 350px;
+  flex-shrink: 0;
 
-  .appBarShift {
-    width: calc(100% - #{$drawerWidth}px);
-    margin-left: $drawerWidth;
-    transition: margin 0.3s ease, width 0.3s ease-out;
-  }
-
-  .menuButton {
-    margin-left: 12;
-    margin-right: 20;
-  }
-
-  .hide {
-    display: none;
-  }
-
-  .drawer {
-    width: $drawerWidth;
-    flex-shrink: 0;
-  }
-
-  .drawerPaper {
-    width: $drawerWidth;
-  }
-
-  .drawerHeader {
+  & .drawerPaper {
+    width: 350px;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
-    padding: 0 8px;
-    justify-content: flex-end;
   }
+}
 
-  .content {
-    flex-grow: 1;
-    padding: 20px;
-    height: calc(100vh - 128px);
-    transition: margin 0.3s ease;
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  /* necessary for content to be below app bar */
+  min-height: 64px;
+}
+
+.NPF-container {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.NPF-buttons {
+  width: 100%;
+
+  & .NPF-buttons {
+    width: 50%;
   }
+}
 
-    .contentShift {
-      transition: margin 0.3s ease-out;
-      margin-left: 0;
-    }
+.content {
+  flex-grow: 1;
+  height: calc(100vh - 128px);
+  padding: 24px;
+  transition: margin 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+  margin-left: -350px;
+}
 
-    .drawerTypo {
-        margin-left: 380px;
-        transition: margin 0.3s ease-out;
-    }
+.contentShift {
+  transition: margin 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+  margin-left: 0;
 }

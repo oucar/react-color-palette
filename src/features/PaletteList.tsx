@@ -25,17 +25,12 @@ const PaletteList: React.FC<PaletteListProps> = ({ palettes }) => {
       <div className="paletteListContainer">
         <nav className="paletteListNav">
           <h1>React Colors</h1>
-          <Link to='/palette/new'>Create Palette</Link>
+          <Link to="/palette/new">Create Palette</Link>
         </nav>
         <div className="palettes">
           {palettes.map((palette) => (
             <Link to={`/palette/${palette.id}`} key={palette.id}>
-              <MiniPalette
-                paletteName={palette.paletteName}
-                colors={palette.colors}
-                emoji={palette.emoji}
-                key={palette.id}
-              />
+              <MiniPalette {...palette} key={palette.id} />
             </Link>
           ))}
         </div>
