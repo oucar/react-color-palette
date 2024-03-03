@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, useParams } from "react-router-dom";
 import PaletteList from "./features/PaletteList";
 import NewPaletteForm from "./features/NewPaletteForm";
@@ -8,7 +8,14 @@ import { seedColors } from "./app/common/seedColors";
 import { generatePalette } from "./app/common/colorHelpers";
 
 export default function App() {
-  const [palettes, setPalettes] = useState(seedColors);
+  const savedPalettes = JSON.parse(
+    window.localStorage.getItem("palettes") || "[]"
+  );
+  const [palettes, setPalettes] = useState(savedPalettes || seedColors);
+
+  useEffect(() => {
+    window.localStorage.setItem("palettes", JSON.stringify(palettes));
+  }, [palettes]);
 
   const findPalette = (id) => {
     return palettes.find((palette) => palette.id === id);
@@ -37,11 +44,8 @@ export default function App() {
         <Route
           path="/palette/new"
           element={
-            <NewPaletteForm
-                savePalette={savePalette}
-                palettes={palettes}
-            />
-        }
+            <NewPaletteForm savePalette={savePalette} palettes={palettes} />
+          }
         />
         <Route path="/palette/:id" element={<PaletteWrapper />} />
         <Route
