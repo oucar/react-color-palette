@@ -7,6 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./styles/PaletteFormNav.scss";
 import PaletteMetaForm from "./PaletteMetaForm";
+import { AddToPhotos } from "@mui/icons-material";
 
 interface Palette {
   paletteName: string;
@@ -55,7 +56,7 @@ const PaletteFormNav: React.FC<PaletteFormNavProps> = (props) => {
             edge="start"
             sx={{ mr: 2, ...(open && { display: "none" }) }}
           >
-            <MenuIcon />
+            <AddToPhotos />
           </IconButton>
           <Typography
             variant="h6"

@@ -1,6 +1,6 @@
 import React from "react";
 import DraggableColorBox from "./DraggableColorBox";
-import { ReactSortable, ItemInterface } from "react-sortablejs";
+import { ReactSortable } from "react-sortablejs";
 
 interface Color {
   color: string;
