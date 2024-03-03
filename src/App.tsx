@@ -1,54 +1,49 @@
-import Palette from "./features/Palette";
-import { palettes } from "./app/common/seedColors";
-import { generatePalette } from "./app/common/colorHelpers";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useParams,
-} from "react-router-dom";
+import React, { useState } from "react";
+import { Routes, Route, useParams } from "react-router-dom";
 import PaletteList from "./features/PaletteList";
-import SingleColorPalette from "./features/SingleColorPalette";
 import NewPaletteForm from "./features/NewPaletteForm";
+import Palette from "./features/Palette";
+import SingleColorPalette from "./features/SingleColorPalette";
+import { seedColors } from "./app/common/seedColors";
+import { generatePalette } from "./app/common/colorHelpers";
 
-const findPalette = (id) => palettes.find((palette) => palette.id === id);
+export default function App() {
+  const [palettes, setPalettes] = useState(seedColors);
 
-const PaletteWrapper = () => {
-  const { id } = useParams();
-  const palette = generatePalette(findPalette(id));
-  return <Palette palette={palette} />;
-};
+  const findPalette = (id) => {
+    return palettes.find((palette) => palette.id === id);
+  };
 
-const SingleColorPaletteWrapper = () => {
-  const { paletteId, colorId } = useParams();
-  const palette = generatePalette(findPalette(paletteId));
-  return <SingleColorPalette palette={palette} colorId={colorId} />;
-};
+  const PaletteWrapper = () => {
+    const { id } = useParams();
+    const palette = generatePalette(findPalette(id));
+    return <Palette palette={palette} />;
+  };
 
-function App() {
+  const SingleColorWrapper = () => {
+    const { paletteId, colorId } = useParams();
+    const palette = generatePalette(findPalette(paletteId));
+    return <SingleColorPalette palette={palette} colorId={colorId} />;
+  };
+
+  const savePalette = (newPalette) => {
+    setPalettes(palettes.concat(newPalette));
+  };
+
   return (
-    <Routes>
-      {/* Home Route */}
-      <Route
-        path="/"
-        Component={(routeProps) => (
-          <PaletteList palettes={palettes} {...routeProps} history={[]} />
-        )}
-      />
-
-      {/* Palette Route */}
-      <Route path="/palette/:id" element={<PaletteWrapper />} />
-
-      {/* Individual Color Route */}
-      <Route
-        path="/palette/:paletteId/:colorId"
-        Component={() => <SingleColorPaletteWrapper />}
-      />
-
-      {/* New Palette */}
-      <Route path="/palette/new" Component={() => <NewPaletteForm />} />
-    </Routes>
+    <div className="App">
+      <Routes>
+        <Route index path="/" element={<PaletteList palettes={palettes} />} />
+        <Route
+          path="/palette/new"
+          element={<NewPaletteForm savePalette={savePalette} />}
+        />
+        <Route path="/palette/:id" element={<PaletteWrapper />} />
+        <Route
+          path="/palette/:paletteId/:colorId"
+          element={<SingleColorWrapper />}
+        />
+      </Routes>
+    </div>
   );
 }
-
-export default App;

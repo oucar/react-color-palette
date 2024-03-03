@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import ColorBox from "./ColorBox";
 import "rc-slider/assets/index.css";
 import "./styles/Palette.scss";
@@ -6,66 +6,70 @@ import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
 import { toast } from "react-toastify";
 
-class Palette extends Component<any, any> {
-  // @@TODO: Add interface for all the props
-  constructor(props) {
-    super(props);
-    this.state = { level: 500, format: "hex", showingAllColors: true };
-    this.changeLevel = this.changeLevel.bind(this);
-    this.changeFormat = this.changeFormat.bind(this);
-  }
+interface PaletteProps {
+  palette: {
+    colors: Array<{ name: string; hex: string; id: string }[]>;
+    paletteName: string;
+    id: string;
+    emoji: string;
+  };
+}
 
-  changeLevel(level) {
-    this.setState({ level });
-  }
+// React Functional Component with Palette
+const Palette: React.FC<PaletteProps> = ({ palette }) => {
+  const [level, setLevel] = useState<number>(500);
+  const [format, setFormat] = useState<string>("hex");
+  const [showingAllColors] = useState<boolean>(true);
 
-  changeFormat(val: string | number) {
-    let format = this.state.format;
+  const changeLevel = (newLevel: number | number[]) => {
+    if (typeof newLevel === 'number') {
+      setLevel(newLevel);
+    } else if (Array.isArray(newLevel) && newLevel.length > 0) {
+      // Handle the case when an array of numbers is passed (e.g., from Slider component)
+      setLevel(newLevel[0]); // For simplicity, just use the first value in the array
+    }
+  };
+  
 
+  const changeFormat = (val: string | number) => {
     if (val === format) {
       toast.error(`Format already set to ${val}`, {
         position: "bottom-right",
         theme: "light",
       });
     } else {
-      this.setState({ format: val as string });
+      setFormat(val as string);
       toast.success(`Format changed to ${val}`, {
         position: "bottom-right",
         theme: "light",
       });
     }
-  }
-  render() {
-    // @@TODO: Add interface for all the props
-    const { colors, paletteName, id, emoji } = this.props.palette;
-    const { level, format } = this.state;
+  };
 
-    // colors are being outputted as an object, so we need to convert it to an array
-    const colorBoxes = colors[level].map((color) => (
-      <ColorBox
-        background={color[format]}
-        name={color.name}
-        key={color.id}
-        id={color.id}
-        paletteId={id}
-        showLink
+  // colors are being outputted as an object, so we need to convert it to an array
+  const colorBoxes = palette.colors[level].map((color) => (
+    <ColorBox
+      background={color[format]}
+      name={color.name}
+      key={color.id}
+      id={color.id}
+      paletteId={palette.id}
+      showLink
+    />
+  ));
+
+  return (
+    <div className="palette">
+      <Navbar
+        level={level}
+        changeLevel={changeLevel}
+        handleChange={(value) => changeFormat(value as string)}
+        showingAllColors={showingAllColors}
       />
-    ));
-
-    return (
-      <div className="palette">
-        <Navbar
-          level={level}
-          changeLevel={this.changeLevel}
-          handleChange={(value) => this.changeFormat(value as string)}
-          showingAllColors={this.state.showingAllColors}
-        />
-        {/* {format} */}
-        <div className="paletteColors">{colorBoxes}</div>
-        <PaletteFooter paletteName={paletteName} emoji={emoji} />
-      </div>
-    );
-  }
-}
+      <div className="paletteColors">{colorBoxes}</div>
+      <PaletteFooter paletteName={palette.paletteName} emoji={palette.emoji} />
+    </div>
+  );
+};
 
 export default Palette;

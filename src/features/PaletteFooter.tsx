@@ -1,21 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 
 interface PaletteFooterProps {
   paletteName: string;
   emoji: string;
 }
 
-class PaletteFooter extends Component<PaletteFooterProps> {
-  render() {
-    const { paletteName, emoji } = this.props;
-
-    return (
-      <footer className="Palette-footer">
-        {paletteName}
-        <span className="emoji">{emoji}</span>
-      </footer>
-    );
-  }
-}
+const PaletteFooter: React.FC<PaletteFooterProps> = ({ paletteName, emoji }) => {
+  return (
+    <footer className="Palette-footer">
+      {paletteName}
+      <span className="emoji">{emoji}</span>
+    </footer>
+  );
+};
 
 export default PaletteFooter;

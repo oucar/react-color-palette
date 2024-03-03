@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styles/PaletteList.scss";
 import MiniPalette from "./MiniPalette";
 import { Link } from "react-router-dom";
@@ -17,40 +17,31 @@ interface Palette {
 
 interface PaletteListProps {
   palettes: Palette[];
-  history: any;
 }
 
-class PaletteList extends Component<PaletteListProps> {
-  goToPalette(id) {
-    this.props.history.push(`/palette/${id}`);
-  }
-
-  render() {
-    const { palettes } = this.props;
-
-    return (
-      <div className="paletteListRoot">
-        <div className="paletteListContainer">
-          <nav className="paletteListNav">
-            <h1>React Colors</h1>
-            <Link to='/palette/new'>Create Palette</Link>
-          </nav>
-          <div className="palettes">
-            {palettes.map((palette) => (
-              <Link to={`/palette/${palette.id}`} key={palette.id}>
-                <MiniPalette
-                  paletteName={palette.paletteName}
-                  colors={palette.colors}
-                  emoji={palette.emoji}
-                  key={palette.id}
-                />
-              </Link>
-            ))}
-          </div>
+const PaletteList: React.FC<PaletteListProps> = ({ palettes }) => {
+  return (
+    <div className="paletteListRoot">
+      <div className="paletteListContainer">
+        <nav className="paletteListNav">
+          <h1>React Colors</h1>
+          <Link to='/palette/new'>Create Palette</Link>
+        </nav>
+        <div className="palettes">
+          {palettes.map((palette) => (
+            <Link to={`/palette/${palette.id}`} key={palette.id}>
+              <MiniPalette
+                paletteName={palette.paletteName}
+                colors={palette.colors}
+                emoji={palette.emoji}
+                key={palette.id}
+              />
+            </Link>
+          ))}
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default PaletteList;

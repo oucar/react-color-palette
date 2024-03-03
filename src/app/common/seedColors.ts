@@ -12,7 +12,7 @@ interface Palette {
 
 // Initial color palettes for the app
 // @TODO: Only for debugging purposes - will be changed later on
-export const palettes: Palette[] = [
+export const seedColors: Palette[] = [
   {
     paletteName: "Material UI Colors",
     id: "material-ui-colors",

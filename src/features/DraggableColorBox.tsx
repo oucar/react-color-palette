@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-
+import React from 'react';
 import './styles/DraggableColorBox.scss';
 
 interface DraggableColorBoxProps {
@@ -7,16 +6,12 @@ interface DraggableColorBoxProps {
   name: string;
 }
 
-class DraggableColorBox extends Component<DraggableColorBoxProps> {
-  render() {
-    const { color, name } = this.props;
-
-    return (
-      <div className="draggableColorBoxRoot" style={{ backgroundColor: color }}>
-        {name}
-      </div>
-    );
-  }
-}
+const DraggableColorBox: React.FC<DraggableColorBoxProps> = ({ color, name }) => {
+  return (
+    <div className="draggableColorBoxRoot" style={{ backgroundColor: color }}>
+      {name}
+    </div>
+  );
+};
 
 export default DraggableColorBox;

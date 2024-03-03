@@ -1,5 +1,5 @@
-import { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import ColorBox from "./ColorBox";
 import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
@@ -12,9 +12,6 @@ interface Color {
   hex: string;
 }
 
-// @@TODO: Define the Palette interface somewhere else (currently duplicating)
-// See seedColors.ts for the original definition
-// @@TODO: This needs to be cleaned in the future.
 interface Palette {
   paletteName: string;
   id: string;
@@ -26,69 +23,69 @@ interface SingleColorPaletteProps {
   palette: Palette;
   colorId: string | undefined;
 }
-class SingleColorPalette extends Component<SingleColorPaletteProps> {
-  private _shades: Color[];
 
-  constructor(props: SingleColorPaletteProps) {
-    super(props);
-    this._shades = this.gatherShades(this.props.palette, this.props.colorId!);
-    this.state = { format: "hex" };
-    this.changeFormat = this.changeFormat.bind(this);
-  }
+const SingleColorPalette: React.FC<SingleColorPaletteProps> = ({ palette }) => {
+  const [shades, setShades] = useState<Color[]>([]);
+  const [format, setFormat] = useState<string>("hex");
 
-  changeFormat(val) {
-    this.setState({ format: val });
-  }
+  const { colorId } = useParams<{ colorId: string }>();
 
-  gatherShades(palette: Palette, colorToFilterBy: string) {
-    let shades: Color[] = [];
-    let allColors = palette.colors;
+  useEffect(() => {
+    const gatherShades = () => {
+      let shades: Color[] = [];
+      let allColors = palette.colors;
 
-    // Flatten the array of arrays
-    const flattenedColors = Object.values(allColors).flat();    
+      // Flatten the array of arrays
+      const flattenedColors = Object.values(allColors).flat();
 
-    for (let color of flattenedColors) {
-      if (color.name.toLowerCase().startsWith(colorToFilterBy)) {
-        shades.push(color);
+      for (let color of flattenedColors) {
+        if (color.name.toLowerCase().startsWith(colorId!.toLowerCase())) {
+          shades.push(color);
+        }
       }
-    }
 
-    // get rid of the first color (50) and return the rest
-    return shades.slice(1);
-  }
+      // get rid of the first color (50) and return the rest
+      setShades(shades.slice(1));
+    };
 
-  render() {
-    const { paletteName, emoji, id } = this.props.palette;
-    const colorBoxes = this._shades.map((color) => (
-      <ColorBox
-        background={color.hex}
-        key={color.name}
-        name={color.name}
-        showLink={false}
+    gatherShades();
+  }, [colorId, palette.colors]);
+
+  const changeFormat = (val: string | number) => {
+    setFormat(val as string); 
+  };
+  
+
+  const colorBoxes = shades.map((color) => (
+    <ColorBox
+    background={color[format]}
+    name={color.name}
+    paletteId={palette.id} 
+    id={palette.id} // not sure about this?          
+    key={color.name}      
+    showLink={false}
+  />  ));
+
+  return (
+    <div className="singleColorPalette palette">
+      <Navbar
+        handleChange={changeFormat}
+        showingAllColors={false}
+        level={0}
+        changeLevel={() => {}}
       />
-    ));
 
-    return (
-      <div className="singleColorPalette palette">
-        <Navbar
-          handleChange={this.changeFormat}
-          showingAllColors={false}
-          level={0}
-          changeLevel={() => {}}
-        />
-
-        <div className="paletteColors">
-          {colorBoxes}
-          <div className="colorBox goBack">
-            <Link to={`/palette/${id}`} className="backButton">
-              GO BACK
-            </Link>
-          </div>
+      <div className="paletteColors">
+        {colorBoxes}
+        <div className="colorBox goBack">
+          <Link to={`/palette/${palette.id}`} className="backButton">
+            GO BACK
+          </Link>
         </div>
-        <PaletteFooter paletteName={paletteName} emoji={emoji} />
       </div>
-    );
-  }
-}
+      <PaletteFooter paletteName={palette.paletteName} emoji={palette.emoji} />
+    </div>
+  );
+};
 
 export default SingleColorPalette;
