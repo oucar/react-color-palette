@@ -9,6 +9,7 @@ import { generatePalette } from "./app/common/colorHelpers";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "./features/styles/App.scss";
 import Page from "./features/Page";
+import NotFound from "./features/NotFound";
 
 interface Color {
   name: string;
@@ -105,10 +106,7 @@ export default function App() {
             path="*"
             element={
               <Page>
-                <PaletteList
-                  palettes={palettes}
-                  deletePalette={deletePalette}
-                />
+                <NotFound />
               </Page>
             }
           />

@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:css": "tailwindcss build src/input.css -o src/output.css"
   },
   "dependencies": {
     "@emoji-mart/data": "^1.1.2",
@@ -16,10 +17,15 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.11",
     "@mui/material": "^5.15.11",
+    "@tsparticles/engine": "^3.3.0",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.3.0",
     "@types/node-sass": "^4.11.7",
     "@types/prop-types": "^15.7.11",
     "chroma-js": "^2.4.2",
+    "clsx": "^2.1.0",
     "emoji-mart": "^5.5.2",
+    "framer-motion": "^11.0.8",
     "prop-types": "^15.8.1",
     "rc-slider": "^10.5.0",
     "react": "^18.2.0",
@@ -31,7 +37,8 @@
     "react-sortablejs": "^6.1.4",
     "react-toastify": "^10.0.4",
     "react-transition-group": "^4.4.5",
-    "sortablejs": "^1.15.2"
+    "sortablejs": "^1.15.2",
+    "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",
@@ -43,6 +50,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "sass": "^1.71.1",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
     "vite": "^5.1.4"
   }

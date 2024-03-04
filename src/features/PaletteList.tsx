@@ -15,6 +15,7 @@ import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
 import blue from "@mui/material/colors/blue";
 import red from "@mui/material/colors/red";
+import { BackgroundGradient } from "./BackgroundGradient";
 
 interface Color {
   name: string;
@@ -33,7 +34,10 @@ interface PaletteListProps {
   deletePalette: (id: string) => void;
 }
 
-const PaletteList: React.FC<PaletteListProps> = ({ palettes, deletePalette }) => {
+const PaletteList: React.FC<PaletteListProps> = ({
+  palettes,
+  deletePalette,
+}) => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [deletingId, setDeletingId] = useState("");
 
@@ -65,22 +69,26 @@ const PaletteList: React.FC<PaletteListProps> = ({ palettes, deletePalette }) =>
           {palettes.map((palette) => {
             const itemRef = createRef<HTMLDivElement>();
             return (
-              <CSSTransition
-                key={palette.id}
-                timeout={500}
-                classNames="fade"
-                nodeRef={itemRef}
-              >
-                <div ref={itemRef}>
-                  <MiniPalette
-                    {...palette}
-                    key={palette.id}
-                    id={palette.id}
-                    openDialog={() => openDialog(palette.id)}
-                    handleDelete={() => deletePalette(palette.id)}
-                  />
-                </div>
-              </CSSTransition>
+              // <BackgroundGradient>
+                <CSSTransition
+                  key={palette.id}
+                  timeout={500}
+                  classNames="fade"
+                  nodeRef={itemRef}
+                >
+                  <div ref={itemRef}>
+                    <BackgroundGradient>
+                    <MiniPalette
+                      {...palette}
+                      key={palette.id}
+                      id={palette.id}
+                      openDialog={() => openDialog(palette.id)}
+                      handleDelete={() => deletePalette(palette.id)}
+                    />
+                    </BackgroundGradient>
+                  </div>
+                </CSSTransition>
+              // </BackgroundGradient>
             );
           })}
         </TransitionGroup>
