@@ -24,10 +24,10 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: rgb(229 229 229);
   
     & a {
-      color: white;
+      color: rgb(229 229 229);
     }
   }
   
@@ -45,6 +45,16 @@
     }
   }
   
+  .dialog {
+    background-color: #0F2027;
+    color: rgb(229 229 229);
+    width: 30vw;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
   // Responsive design
   @media screen and (max-width: 1550px) {

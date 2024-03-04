@@ -17,6 +17,7 @@ import red from "@mui/material/colors/red";
 import { BackgroundGradient } from "./BackgroundGradient";
 import "./styles/PaletteList.scss";
 import { BackgroundBeams } from "./BackgroundBeams";
+import { GlowingBorder } from "./GlowingBorder";
 
 interface Color {
   name: string;
@@ -65,7 +66,12 @@ const PaletteList: React.FC<PaletteListProps> = ({
         <nav className="paletteListNav">
           <h1 className="paletteListHeading">React Colors</h1>
           <Link to="/palette/new" className="paletteListNew">
-            Create Palette
+            <GlowingBorder
+              borderRadius="1.75rem"
+              className="bg-slate-900 text-white"
+            >
+              Create Palette
+            </GlowingBorder>
           </Link>
         </nav>
         <TransitionGroup className="palettes">
@@ -98,40 +104,45 @@ const PaletteList: React.FC<PaletteListProps> = ({
           })}
         </TransitionGroup>
       </div>
+      <div></div>
       <Dialog open={openDeleteDialog} aria-labelledby="delete-dialog-title">
-        <DialogTitle id="delete-dialog-title">Delete This Palette?</DialogTitle>
-        <List>
-          <ListItem disableGutters>
-            <ListItemButton onClick={handleDelete}>
-              <ListItemAvatar>
-                <Avatar
-                  style={{
-                    background: blue[100],
-                    color: blue[600],
-                  }}
-                >
-                  <CheckIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary="Delete" />
-            </ListItemButton>
-          </ListItem>
-          <ListItem disableGutters>
-            <ListItemButton onClick={closeDialog}>
-              <ListItemAvatar>
-                <Avatar
-                  style={{
-                    background: red[100],
-                    color: red[600],
-                  }}
-                >
-                  <CloseIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary="Cancel" />
-            </ListItemButton>
-          </ListItem>
-        </List>
+        <div className="dialog">
+          <DialogTitle id="delete-dialog-title">
+            Delete This Palette?
+          </DialogTitle>
+          <List>
+            <ListItem disableGutters>
+              <ListItemButton onClick={handleDelete}>
+                <ListItemAvatar>
+                  <Avatar
+                    style={{
+                      background: blue[100],
+                      color: blue[600],
+                    }}
+                  >
+                    <CheckIcon />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText primary="Delete" />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disableGutters>
+              <ListItemButton onClick={closeDialog}>
+                <ListItemAvatar>
+                  <Avatar
+                    style={{
+                      background: red[100],
+                      color: red[600],
+                    }}
+                  >
+                    <CloseIcon />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText primary="Cancel" />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </div>
       </Dialog>
     </div>
   );

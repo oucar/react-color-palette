@@ -1,15 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 
 const defaultTheme = require("tailwindcss/defaultTheme");
- 
+
 const colors = require("tailwindcss/colors");
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
-
 export default {
-  content: ["./*.{html,ts,jsx,tsx}", "./src/**/*.{html,ts,jsx,tsx}", "./src/*.{html,ts,jsx,tsx}"],
+  content: [
+    "./*.{html,ts,jsx,tsx}",
+    "./src/**/*.{html,ts,jsx,tsx}",
+    "./src/*.{html,ts,jsx,tsx}",
+  ],
   darkMode: "class",
   theme: {
     extend: {
@@ -21,10 +24,10 @@ export default {
         fifth: "moveInCircle 20s ease infinite",
       },
       colors: {
-        gradientShadow: '#1ca0fb', 
-        gradient1: '#9CECFB',  
-        gradient2: '#65C7F7',  
-        gradient3: '#0052D4', 
+        gradientShadow: "#1ca0fb",
+        gradient1: "#9CECFB",
+        gradient2: "#65C7F7",
+        gradient3: "#0052D4",
       },
       keyframes: {
         moveHorizontal: {
@@ -71,9 +74,8 @@ function addVariablesForColors({ addBase, theme }: any) {
   let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
- 
+
   addBase({
     ":root": newVars,
   });
 }
-
