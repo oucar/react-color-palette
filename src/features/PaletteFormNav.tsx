@@ -7,7 +7,8 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./styles/PaletteFormNav.scss";
 import PaletteMetaForm from "./PaletteMetaForm";
-import { AddToPhotos } from "@mui/icons-material";
+import { AddToPhotos, Clear, Fingerprint } from "@mui/icons-material";
+import { GlowingBorder } from "./GlowingBorder";
 
 interface Palette {
   paletteName: string;
@@ -68,19 +69,21 @@ const PaletteFormNav: React.FC<PaletteFormNavProps> = (props) => {
           </Typography>
         </Toolbar>
         <div className="PFNav-navBtns">
+
+
           <Link to="/">
-            <Button className="button" variant="contained" color="secondary">
-              Go Back
-            </Button>
+            <IconButton aria-label="back" color="error">
+              <Clear />
+            </IconButton>{" "}
           </Link>
-          <Button
-            className="button"
-            variant="contained"
-            color="primary"
+
+          <GlowingBorder
+            borderRadius="1.75rem"
+            className="bg-slate-900 text-white"
             onClick={showForm}
           >
-            Save
-          </Button>
+            Create Palette
+          </GlowingBorder>
         </div>
       </AppBar>
       {formShowing ? (

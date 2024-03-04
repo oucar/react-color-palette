@@ -20,7 +20,11 @@ const DraggableColorList: React.FC<DraggableColorListProps> = ({
 }) => {
   return (
     <ReactSortable
-      list={colors.map((color, index) => ({ ...color, id: index.toString() }))} 
+      list={colors.map((color, index) => ({
+        ...color,
+        id: index.toString(),
+      }))}
+      animation={200}
       setList={setColors}
       style={{ height: "100%" }}
     >

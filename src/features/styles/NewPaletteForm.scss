@@ -2,7 +2,6 @@ $drawerWidth: 350px;
 
 .newPaletteFormRoot {
   display: flex;
-  background-color: red;
 }
 
 .drawer {
@@ -14,6 +13,7 @@ $drawerWidth: 350px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
+    background-color: rgb(229 229 229);
   }
 }
 
@@ -31,6 +31,8 @@ $drawerWidth: 350px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #0F2027;
+  background-color: rgb(229 229 229);
 }
 
 .NPF-buttons {

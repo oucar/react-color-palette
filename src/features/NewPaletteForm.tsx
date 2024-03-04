@@ -129,12 +129,12 @@ function NewPaletteForm(props) {
           </div>
         </Drawer>
         <main className={`content ${open && "contentShift"}`}>
-          <div className="drawerHeader" />
-          <DraggableColorList
-            colors={colors}
-            setColors={setColors}
-            removeColor={removeColor}
-          />
+            <div className="drawerHeader" />
+            <DraggableColorList
+              colors={colors}
+              setColors={setColors}
+              removeColor={removeColor}
+            />
         </main>
       </div>
     </>

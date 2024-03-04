@@ -5,7 +5,6 @@ import "./styles/Palette.scss";
 import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
 import { toast } from "react-toastify";
-import { FollowingPointer } from "./FollowingPointer";
 
 interface PaletteProps {
   palette: {

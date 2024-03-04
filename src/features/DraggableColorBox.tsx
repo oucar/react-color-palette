@@ -19,10 +19,10 @@ const DraggableColorBox: React.FC<DraggableColorBoxProps> = ({
 
   return (
     <div className="draggableColorBoxRoot" style={{ backgroundColor: color }}>
-      <div className="DCB-boxContent">
-        <span className={isDarkColor ? "lightText" : ""}>{name}</span>
-        <DeleteIcon className="DCB-deleteIcon" onClick={handleClick} />
-      </div>
+        <div className="DCB-boxContent">
+          <span className={isDarkColor ? "lightText" : ""}>{name}</span>
+          <DeleteIcon className="DCB-deleteIcon" onClick={handleClick} />
+        </div>
     </div>
   );
 };
