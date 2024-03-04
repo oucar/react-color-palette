@@ -11,6 +11,12 @@ export default {
         fourth: "moveHorizontal 40s ease infinite",
         fifth: "moveInCircle 20s ease infinite",
       },
+      colors: {
+        gradientShadow: '#1ca0fb', 
+        gradient1: '#9CECFB',  
+        gradient2: '#65C7F7',  
+        gradient3: '#0052D4', 
+      },
       keyframes: {
         moveHorizontal: {
           "0%": {

@@ -1,8 +1,7 @@
 import React, { useState, createRef } from "react";
-import "./styles/PaletteList.scss";
-import MiniPalette from "./MiniPalette";
 import { Link } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import MiniPalette from "./MiniPalette";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import Avatar from "@mui/material/Avatar";
@@ -16,6 +15,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import blue from "@mui/material/colors/blue";
 import red from "@mui/material/colors/red";
 import { BackgroundGradient } from "./BackgroundGradient";
+import "./styles/PaletteList.scss";
 
 interface Color {
   name: string;
@@ -40,6 +40,7 @@ const PaletteList: React.FC<PaletteListProps> = ({
 }) => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [deletingId, setDeletingId] = useState("");
+  const [hoveredPaletteId, setHoveredPaletteId] = useState<string | null>(null);
 
   const openDialog = (id) => {
     setOpenDeleteDialog(true);
@@ -69,15 +70,18 @@ const PaletteList: React.FC<PaletteListProps> = ({
           {palettes.map((palette) => {
             const itemRef = createRef<HTMLDivElement>();
             return (
-              // <BackgroundGradient>
-                <CSSTransition
-                  key={palette.id}
-                  timeout={500}
-                  classNames="fade"
-                  nodeRef={itemRef}
+              <CSSTransition
+                key={palette.id}
+                timeout={500}
+                classNames="fade"
+                nodeRef={itemRef}
+              >
+                <div
+                  ref={itemRef}
+                  onMouseEnter={() => setHoveredPaletteId(palette.id)}
+                  onMouseLeave={() => setHoveredPaletteId(null)}
                 >
-                  <div ref={itemRef}>
-                    <BackgroundGradient>
+                  <BackgroundGradient animate={hoveredPaletteId === palette.id}>
                     <MiniPalette
                       {...palette}
                       key={palette.id}
@@ -85,10 +89,9 @@ const PaletteList: React.FC<PaletteListProps> = ({
                       openDialog={() => openDialog(palette.id)}
                       handleDelete={() => deletePalette(palette.id)}
                     />
-                    </BackgroundGradient>
-                  </div>
-                </CSSTransition>
-              // </BackgroundGradient>
+                  </BackgroundGradient>
+                </div>
+              </CSSTransition>
             );
           })}
         </TransitionGroup>

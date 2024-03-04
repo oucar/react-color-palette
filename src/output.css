@@ -621,8 +621,8 @@ video {
   background-color: rgb(63 63 70 / var(--tw-bg-opacity));
 }
 
-.bg-\[radial-gradient\(circle_farthest-side_at_0_100\%\2c \#00ccb1\2c transparent\)\2c radial-gradient\(circle_farthest-side_at_100\%_0\2c \#7b61ff\2c transparent\)\2c radial-gradient\(circle_farthest-side_at_100\%_100\%\2c \#ffc414\2c transparent\)\2c radial-gradient\(circle_farthest-side_at_0_0\2c \#1ca0fb\2c \#141316\)\] {
-  background-image: radial-gradient(circle farthest-side at 0 100%,#00ccb1,transparent),radial-gradient(circle farthest-side at 100% 0,#7b61ff,transparent),radial-gradient(circle farthest-side at 100% 100%,#ffc414,transparent),radial-gradient(circle farthest-side at 0 0,#1ca0fb,#141316);
+.bg-\[radial-gradient\(circle_farthest-side_at_0_100\%\2c \#1a2a6c\2c transparent\)\2c radial-gradient\(circle_farthest-side_at_100\%_0\2c \#b21f1f\2c transparent\)\2c radial-gradient\(circle_farthest-side_at_100\%_100\%\2c \#fdbb2d\2c transparent\)\2c radial-gradient\(circle_farthest-side_at_0_0\2c \#1a2a6c\2c \#f12000\)\] {
+  background-image: radial-gradient(circle farthest-side at 0 100%,#1a2a6c,transparent),radial-gradient(circle farthest-side at 100% 0,#b21f1f,transparent),radial-gradient(circle farthest-side at 100% 100%,#fdbb2d,transparent),radial-gradient(circle farthest-side at 0 0,#1a2a6c,#f12000);
 }
 
 .p-4 {

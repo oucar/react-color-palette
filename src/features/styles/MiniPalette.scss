@@ -1,10 +1,11 @@
 .miniPaletteRoot {
 
-    border-radius: 5px;
+    // border-radius: 1.5px;
     padding: 0.5rem;
     position: relative;
     overflow: hidden;
-  
+    margin: 7px;
+
     &:hover {
       cursor: pointer;
     }
@@ -31,11 +32,10 @@
 }
 
   .miniPaletteColors {
-    background-color: "#dae1e4";
     height: 150px;
     width: 100%;
-    border-radius: 5px;
-    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid  white; /* Add a white border */
   }
   
   .miniPaletteTitle {
@@ -43,24 +43,42 @@
     justify-content: space-between;
     align-items: center;
     margin: 0;
-    color: black;
+    color: white;
     padding-top: 0.5rem;
+    padding-left: 5px;
     font-size: 1rem;
     position: relative;
   }
   
-  .miniPalettEmoji {
+  .miniPaletteEmoji {
     margin-left: 0.5rem;
     font-size: 1.5rem;
+    padding-right: px;
+
   }
 
   .miniColor {
-    background-color: red;
     height: 25%;
     width: 20%;
     display: inline-block;
     margin: 0 auto;
     position: relative;
-    margin-bottom: -3.5px;
+    margin-bottom: -6px;
+  
+    &:nth-child(1) {
+      border-top-left-radius: 1.5rem;
+    }
+  
+    &:nth-child(5) {
+      border-top-right-radius: 1.5rem;
+    }
+  
+    &:nth-child(16) {
+      border-bottom-left-radius: 1.5rem;
+    }
+  
+    &:nth-child(20) {
+      border-bottom-right-radius: 1.5rem;
+    }
   }
   

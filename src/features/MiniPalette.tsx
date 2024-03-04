@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./styles/MiniPalette.scss";
-import { Link } from "react-router-dom";
 
 interface Color {
   name: string;
@@ -24,8 +24,6 @@ const MiniPalette: React.FC<MiniPaletteProps> = ({
   id,
   openDialog,
 }) => {
-
-
   const deletePaletteDialog = (e) => {
     e.stopPropagation();
     openDialog(id);
