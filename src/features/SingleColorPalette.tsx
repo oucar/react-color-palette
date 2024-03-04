@@ -52,19 +52,19 @@ const SingleColorPalette: React.FC<SingleColorPaletteProps> = ({ palette }) => {
   }, [colorId, palette.colors]);
 
   const changeFormat = (val: string | number) => {
-    setFormat(val as string); 
+    setFormat(val as string);
   };
-  
 
   const colorBoxes = shades.map((color) => (
     <ColorBox
-    background={color[format]}
-    name={color.name}
-    paletteId={palette.id} 
-    id={palette.id} // not sure about this?          
-    key={color.name}      
-    showLink={false}
-  />  ));
+      background={color[format]}
+      name={color.name}
+      paletteId={palette.id}
+      id={palette.id}
+      key={color.name}
+      showLink={false}
+    />
+  ));
 
   return (
     <div className="singleColorPalette palette">

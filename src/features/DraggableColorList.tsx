@@ -24,7 +24,7 @@ const DraggableColorList: React.FC<DraggableColorListProps> = ({
         ...color,
         id: index.toString(),
       }))}
-      animation={200}
+      animation={300}
       setList={setColors}
       style={{ height: "100%" }}
     >

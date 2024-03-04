@@ -11,10 +11,13 @@
   .paletteFooter {
     padding-right: 10px;
   }
+}
 
+.singleColorPalette {
+  height: 100vh !important;
 }
 .paletteColors {
-  height: 90%;
+  height: 100%;
 }
 .paletteFooter {
   background-color: #0F2027;
@@ -29,3 +32,4 @@
   margin-left: 20px;
   margin: 0 1rem;
 }
+
