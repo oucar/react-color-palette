@@ -13,9 +13,9 @@
 
 
 .miniPaletteDeleteIcon{
-    color: white;
-    width: 20px;
-    height: 20px;
+    color: rgb(229 229 229);
+    width: 2em !important; 
+    height: 2em !important;
     position: absolute;
     right: 0;
     top: 0;
@@ -26,7 +26,7 @@
 }
 
 .miniPaletteDeleteIcon:hover{
-  background-color: #eb3d30;
+  background-color: red;
   opacity: 1;
 
 }
@@ -35,7 +35,7 @@
     height: 150px;
     width: 100%;
     border-radius: 1.5rem;
-    border: 1px solid  white; /* Add a white border */
+    border: 1px solid  rgb(229 229 229);
   }
   
   .miniPaletteTitle {
@@ -43,7 +43,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 0;
-    color: white;
+    color: rgb(229 229 229);
     padding-top: 0.5rem;
     padding-left: 5px;
     font-size: 1rem;
@@ -53,7 +53,7 @@
   .miniPaletteEmoji {
     margin-left: 0.5rem;
     font-size: 1.5rem;
-    padding-right: px;
+    padding-right: 5px;
 
   }
 

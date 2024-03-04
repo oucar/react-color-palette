@@ -16,6 +16,7 @@ import blue from "@mui/material/colors/blue";
 import red from "@mui/material/colors/red";
 import { BackgroundGradient } from "./BackgroundGradient";
 import "./styles/PaletteList.scss";
+import { BackgroundBeams } from "./BackgroundBeams";
 
 interface Color {
   name: string;
@@ -59,6 +60,7 @@ const PaletteList: React.FC<PaletteListProps> = ({
 
   return (
     <div className="paletteListRoot">
+      <BackgroundBeams />
       <div className="paletteListContainer">
         <nav className="paletteListNav">
           <h1 className="paletteListHeading">React Colors</h1>
