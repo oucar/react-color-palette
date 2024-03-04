@@ -5,6 +5,7 @@ import "./styles/Palette.scss";
 import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
 import { toast } from "react-toastify";
+import { FollowingPointer } from "./FollowingPointer";
 
 interface PaletteProps {
   palette: {
@@ -22,14 +23,13 @@ const Palette: React.FC<PaletteProps> = ({ palette }) => {
   const [showingAllColors] = useState<boolean>(true);
 
   const changeLevel = (newLevel: number | number[]) => {
-    if (typeof newLevel === 'number') {
+    if (typeof newLevel === "number") {
       setLevel(newLevel);
     } else if (Array.isArray(newLevel) && newLevel.length > 0) {
       // Handle the case when an array of numbers is passed (e.g., from Slider component)
       setLevel(newLevel[0]); // For simplicity, just use the first value in the array
     }
   };
-  
 
   const changeFormat = (val: string | number) => {
     if (val === format) {
@@ -67,6 +67,7 @@ const Palette: React.FC<PaletteProps> = ({ palette }) => {
         showingAllColors={showingAllColors}
       />
       <div className="paletteColors">{colorBoxes}</div>
+
       <PaletteFooter paletteName={palette.paletteName} emoji={palette.emoji} />
     </div>
   );

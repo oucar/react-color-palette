@@ -7,6 +7,7 @@ import "./styles/Navbar.scss";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { BackgroundBeams } from "./BackgroundBeams";
 
 interface NavbarProps {
   level: number;
@@ -28,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({
       <div className="logo">
         <Link to="/">React Colors</Link>
       </div>
-
+      <BackgroundBeams />
       {showingAllColors && (
         <div className="slider-container">
           <div className="slider-container">
@@ -48,6 +49,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
       <div className="select-container">
         <Select
+          type="dark"
           value={format}
           onChange={(e) => {
             setFormat(e.target.value as string);

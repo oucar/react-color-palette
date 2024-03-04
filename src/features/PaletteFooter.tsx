@@ -7,7 +7,7 @@ interface PaletteFooterProps {
 
 const PaletteFooter: React.FC<PaletteFooterProps> = ({ paletteName, emoji }) => {
   return (
-    <footer className="Palette-footer">
+    <footer className="paletteFooter">
       {paletteName}
       <span className="emoji">{emoji}</span>
     </footer>

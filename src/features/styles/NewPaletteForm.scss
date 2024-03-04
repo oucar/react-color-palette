@@ -1,9 +1,8 @@
 $drawerWidth: 350px; 
 
-// NewPaletteForm.scss
-
 .newPaletteFormRoot {
   display: flex;
+  background-color: red;
 }
 
 .drawer {
@@ -22,9 +21,7 @@ $drawerWidth: 350px;
   display: flex;
   align-items: center;
   padding: 0 8px;
-  /* necessary for content to be below app bar */
   min-height: 64px;
-  // background-color: red;
 }
 
 .NPF-container {

@@ -1,7 +1,7 @@
 # React + TypeScript + Vite
 
 - Motivation of the project: Combination of materialuicolors.co & flatuicolors.com
-- JSS: CSS in JS
+- Run `npm run build:css` to build the css file for the tailwind after you make changes to the tailwind.config.js file
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
