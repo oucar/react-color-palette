@@ -9,7 +9,7 @@ import {
 } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "../app/utils/cn";
-import './styles/GlowingBorder.scss';
+import "./styles/GlowingBorder.scss";
 
 export function GlowingBorder({
   borderRadius = "1.75rem",
@@ -33,7 +33,7 @@ export function GlowingBorder({
   return (
     <Component
       className={cn(
-        "bg-transparent relative text-xl w-44 h-8 p-[1px] overflow-hidden ",
+        "bg-transparent relative text-xl w-44 h-10 p-[1px] overflow-hidden ",
         containerClassName
       )}
       style={{
@@ -89,7 +89,8 @@ export const MovingBorder = ({
   useAnimationFrame((time) => {
     const length = pathRef.current?.getTotalLength();
     if (length) {
-      const pxPerMillisecond = length / duration;
+      // making the speed of the animation independent of the duration
+      const pxPerMillisecond = length / 3 / duration;
       progress.set((time * pxPerMillisecond) % length);
     }
   });
