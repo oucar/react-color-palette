@@ -64,7 +64,7 @@ const PaletteMetaForm: React.FC<PaletteMetaFormProps> = (props) => {
         <DialogTitle>Choose a Palette Name</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Please enter a name for your beautiful palette. Make sure it's
+            Please enter a name for this beautiful palette. Make sure it's
             unique!
           </DialogContentText>
 
@@ -81,7 +81,7 @@ const PaletteMetaForm: React.FC<PaletteMetaFormProps> = (props) => {
             />
             <DialogActions>
               <Button onClick={hideForm}>Cancel</Button>
-              <Button variant="contained" color="primary" type="submit">
+              <Button variant="contained" color="success" type="submit">
                 Save Palette
               </Button>
             </DialogActions>

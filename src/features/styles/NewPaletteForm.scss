@@ -13,7 +13,8 @@ $drawerWidth: 350px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    background-color: rgb(229 229 229);
+    justify-content: center;
+    background-color: rgb(206, 204, 204);
   }
 }
 
@@ -29,17 +30,21 @@ $drawerWidth: 350px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: center !important;
+  align-items: space-between !important;
   color: #0F2027;
-  background-color: rgb(229 229 229);
+  background-color: rgb(206, 204, 204);
 }
 
 .NPF-buttons {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100px;
 
-  & .NPF-buttons {
-    width: 50%;
+  & .NPF-button {
+    width: 50% !important;
   }
 }
 

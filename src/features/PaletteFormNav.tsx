@@ -65,7 +65,7 @@ const PaletteFormNav: React.FC<PaletteFormNavProps> = (props) => {
             component="div"
             className={`${open && "shiftNavbarText"}`}
           >
-            Create New Palette
+            Create a New Palette
           </Typography>
         </Toolbar>
         <div className="PFNav-navBtns">
@@ -82,7 +82,7 @@ const PaletteFormNav: React.FC<PaletteFormNavProps> = (props) => {
             className="bg-slate-900 text-white"
             onClick={showForm}
           >
-            Create Palette
+            Create
           </GlowingBorder>
         </div>
       </AppBar>

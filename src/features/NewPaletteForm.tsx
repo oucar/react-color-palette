@@ -105,7 +105,7 @@ function NewPaletteForm(props) {
             <div className="NPF-buttons">
               <Button
                 variant="contained"
-                color="secondary"
+                color="error"
                 onClick={clearColors}
                 className="NPF-button"
               >
@@ -113,7 +113,7 @@ function NewPaletteForm(props) {
               </Button>
               <Button
                 variant="contained"
-                color="primary"
+                color="info"
                 onClick={addRandomColor}
                 disabled={paletteIsFull}
                 className="NPF-button"
