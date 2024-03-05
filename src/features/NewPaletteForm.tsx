@@ -11,18 +11,14 @@ import PaletteFormNav from "./PaletteFormNav";
 import ColorPickerForm from "./ColorPickerForm";
 import { seedColors } from "../app/common/seedColors";
 import { variables } from "../app/common/_variables";
-
-// @TODO: Add the Color interface somewhere else
-interface Color {
-  color: string;
-  name: string;
-}
+import { Color } from "../app/models/color";
+import { Palette } from "../app/models/palette";
 
 function NewPaletteForm(props) {
   const defaultProps = {
     maxColors: 20,
   };
-  
+
   const drawerWidth = variables.$drawerWidth;
 
   const [open, setOpen] = useState(true);

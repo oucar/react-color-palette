@@ -18,18 +18,8 @@ import { BackgroundGradient } from "./BackgroundGradient";
 import "./styles/PaletteList.scss";
 import { BackgroundBeams } from "./BackgroundBeams";
 import { GlowingBorder } from "./GlowingBorder";
+import {Palette} from "../app/models/palette";
 
-interface Color {
-  name: string;
-  color: string;
-}
-
-interface Palette {
-  id: string;
-  paletteName: string;
-  emoji: string;
-  colors: Color[];
-}
 
 interface PaletteListProps {
   palettes: Palette[];

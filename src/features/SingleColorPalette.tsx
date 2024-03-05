@@ -5,19 +5,8 @@ import Navbar from "./Navbar";
 import PaletteFooter from "./PaletteFooter";
 import "./styles/Palette.scss";
 import "./styles/ColorBox.scss";
-
-interface Color {
-  name: string;
-  color: string;
-  hex: string;
-}
-
-interface Palette {
-  paletteName: string;
-  id: string;
-  emoji: string;
-  colors: Color[];
-}
+import {Color} from "../app/models/color";
+import {Palette} from "../app/models/palette";
 
 interface SingleColorPaletteProps {
   palette: Palette;

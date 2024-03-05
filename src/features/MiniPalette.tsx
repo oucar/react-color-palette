@@ -2,11 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./styles/MiniPalette.scss";
-
-interface Color {
-  name: string;
-  color: string;
-}
+import {Color} from "../app/models/color";
 
 interface MiniPaletteProps {
   paletteName: string;

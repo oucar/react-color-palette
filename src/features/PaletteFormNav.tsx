@@ -1,19 +1,14 @@
-import React, { useEffect, ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { Typography, AppBar, Toolbar } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import "./styles/PaletteFormNav.scss";
 import PaletteMetaForm from "./PaletteMetaForm";
-import { AddToPhotos, Clear, Fingerprint } from "@mui/icons-material";
+import { AddToPhotos, Clear } from "@mui/icons-material";
 import { GlowingBorder } from "./GlowingBorder";
+import {Palette} from "../app/models/palette";
 
-interface Palette {
-  paletteName: string;
-  emoji: string;
-}
 
 interface PaletteFormNavProps {
   palettes: any[];
@@ -46,7 +41,6 @@ const PaletteFormNav: React.FC<PaletteFormNavProps> = (props) => {
       <AppBar
         className="PFN-appBar"
         position="fixed"
-        // open={open}
         color="default"
       >
         <Toolbar>

@@ -8,11 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
-
-interface Palette {
-  paletteName: string;
-  emoji: string;
-}
+import {Palette} from "../app/models/palette";
 
 interface PaletteMetaFormProps {
   palettes: any[];
@@ -23,7 +19,6 @@ interface PaletteMetaFormProps {
 }
 
 const PaletteMetaForm: React.FC<PaletteMetaFormProps> = (props) => {
-  //   const [open, setOpen] = useState(true);
   const [stage, setStage] = useState("form");
 
   useEffect(() => {
@@ -44,14 +39,16 @@ const PaletteMetaForm: React.FC<PaletteMetaFormProps> = (props) => {
 
   const savePalette = (emoji) => {
     const newPalette = {
+      id: newPaletteName.toLowerCase().replace(/ /g, "-"),
       paletteName: newPaletteName,
       emoji: emoji.native,
+      colors: []
     };
     handleSubmit(newPalette);
     setStage("");
   };
 
-  const { newPaletteName, setNewPaletteName, handleSubmit, hideForm } = props;
+  const { newPaletteName, handleSubmit, hideForm } = props;
 
   return (
     <div>
