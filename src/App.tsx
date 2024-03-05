@@ -101,7 +101,6 @@ export default function App() {
               </Page>
             }
           />
-          {/* @@TODO: Implement cool 404 page */}
           <Route
             path="*"
             element={
