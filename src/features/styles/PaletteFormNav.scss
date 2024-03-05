@@ -5,7 +5,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 64px;
+  height: $navbarHeight;
   color: $primaryDark;
   background-color: $lightText;
 }
@@ -18,12 +18,12 @@
   }
 
   .appBarShift {
-    width: calc(100% - 350px);
+    width: calc(100% - $drawerWidth);
     margin-left: $drawerWidth;
     transition: margin 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
     flex-direction: row;
     justify-content: space-between;
-    height: 64px;
+    height: $navbarHeight;
   }
   
   .NPF-container {

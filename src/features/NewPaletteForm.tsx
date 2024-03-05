@@ -1,15 +1,16 @@
-import React, { Component, ChangeEvent, useState, useEffect } from "react";
+import { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { Typography, AppBar, Toolbar } from "@mui/material";
+import { Typography } from "@mui/material";
 import "./styles/NewPaletteForm.scss";
 import { useNavigate } from "react-router-dom";
 import DraggableColorList from "./DraggableColorList";
 import PaletteFormNav from "./PaletteFormNav";
 import ColorPickerForm from "./ColorPickerForm";
 import { seedColors } from "../app/common/seedColors";
+import { variables } from "../app/common/_variables";
 
 // @TODO: Add the Color interface somewhere else
 interface Color {
@@ -21,7 +22,8 @@ function NewPaletteForm(props) {
   const defaultProps = {
     maxColors: 20,
   };
-  const drawerWidth = 350;
+  
+  const drawerWidth = variables.$drawerWidth;
 
   const [open, setOpen] = useState(true);
   const [newPaletteName, setNewPaletteName] = useState("");
@@ -65,7 +67,7 @@ function NewPaletteForm(props) {
       isDuplicateColor = colors.some(
         (color) => color.name === randomColor.name
       );
-      console.log(randomColor.color + " " + isDuplicateColor);
+      console.log(`${randomColor.name} - is duplicate: ${isDuplicateColor}`);
       setColors(colors.concat(randomColor));
     }
   };
@@ -131,12 +133,12 @@ function NewPaletteForm(props) {
           </div>
         </Drawer>
         <main className={`content ${open && "contentShift"}`}>
-            <div className="drawerHeader" />
-            <DraggableColorList
-              colors={colors}
-              setColors={setColors}
-              removeColor={removeColor}
-            />
+          <div className="drawerHeader" />
+          <DraggableColorList
+            colors={colors}
+            setColors={setColors}
+            removeColor={removeColor}
+          />
         </main>
       </div>
     </>
