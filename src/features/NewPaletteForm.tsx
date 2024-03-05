@@ -65,6 +65,8 @@ function NewPaletteForm(props) {
       isDuplicateColor = colors.some(
         (color) => color.name === randomColor.name
       );
+      console.log(randomColor.color + " " + isDuplicateColor);
+      setColors(colors.concat(randomColor));
     }
   };
 
