@@ -1,11 +1,13 @@
+@import '../../app/common/variables';
+
 .PaletteFormNav .PFN-appBar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 64px;
-  color: #0F2027;
-  background-color: rgb(229 229 229);
+  color: $primaryDark;
+  background-color: $lightText;
 }
   
   .appBar {
@@ -17,7 +19,7 @@
 
   .appBarShift {
     width: calc(100% - 350px);
-    margin-left: 350px;
+    margin-left: $drawerWidth;
     transition: margin 225ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
     flex-direction: row;
     justify-content: space-between;
@@ -58,7 +60,7 @@
 }
 
 .shiftNavbarText {
-  padding-left: 350px;
+  padding-left: $drawerWidth;
 }
 
 .PFNav-navBtns {

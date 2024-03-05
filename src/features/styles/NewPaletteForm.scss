@@ -1,4 +1,4 @@
-$drawerWidth: 350px; 
+@import '../../app/common/variables';
 
 .newPaletteFormRoot {
   display: flex;
@@ -9,7 +9,7 @@ $drawerWidth: 350px;
   flex-shrink: 0;
 
   & .drawerPaper {
-    width: 350px;
+    width: $drawerWidth;
     box-sizing: border-box;
     display: flex;
     align-items: center;

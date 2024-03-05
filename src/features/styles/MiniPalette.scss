@@ -1,6 +1,6 @@
-.miniPaletteRoot {
+@import '../../app/common/variables';
 
-    // border-radius: 1.5px;
+.miniPaletteRoot {
     padding: 0.5rem;
     position: relative;
     overflow: hidden;
@@ -13,7 +13,7 @@
 
 
 .miniPaletteDeleteIcon{
-    color: rgb(229 229 229);
+    color: $lightText;
     width: 2em !important; 
     height: 2em !important;
     position: absolute;
@@ -35,7 +35,7 @@
     height: 150px;
     width: 100%;
     border-radius: 1.5rem;
-    border: 1px solid  rgb(229 229 229);
+    border: 1px solid  $lightText;
   }
   
   .miniPaletteTitle {
@@ -43,7 +43,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 0;
-    color: rgb(229 229 229);
+    color: $lightText;
     padding-top: 0.5rem;
     padding-left: 5px;
     font-size: 1rem;

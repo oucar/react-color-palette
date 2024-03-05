@@ -1,3 +1,5 @@
+@import '../../app/common/variables';
+
 .paletteListRoot {
     background-color: black;
     height: 100vh;
@@ -24,10 +26,10 @@
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    color: rgb(229 229 229);
+    color: $lightText;
   
     & a {
-      color: rgb(229 229 229);
+      color: $lightText;
     }
   }
   
@@ -46,10 +48,10 @@
   }
   
   .dialog {
-    background-color: #0F2027;
-    color: rgb(229 229 229);
+    background-color: $primaryDark;
+    color: $lightText;
     width: 30vw;
-    min-width: 350px;
+    min-width: $drawerWidth;
     display: flex;
     flex-direction: column;
     justify-content: center;

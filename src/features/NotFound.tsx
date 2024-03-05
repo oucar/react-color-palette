@@ -1,5 +1,4 @@
 import React from "react";
-import "./styles/NotFound.scss";
 import { NotFoundGradientBackground } from "./NotFoundGradientBackground";
 import { Link } from "react-router-dom";
 

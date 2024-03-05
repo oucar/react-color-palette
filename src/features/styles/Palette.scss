@@ -1,8 +1,10 @@
+@import '../../app/common/variables';
+
 .palette {
   height: 100vh;
   display: flex;
-  background-color: #0F2027;
-  color: rgb(229 229 229);  
+  background-color: $primaryDark;
+  color: $lightText;  
   flex-direction: column;
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
@@ -20,7 +22,7 @@
   height: 100%;
 }
 .paletteFooter {
-  background-color: #0F2027;
+  background-color: $primaryDark;
   height: 5vh;
   display: flex;
   justify-content: flex-end;

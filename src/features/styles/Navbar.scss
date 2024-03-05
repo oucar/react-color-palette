@@ -1,3 +1,5 @@
+@import '../../app/common/variables';
+
 /* Navbar Styles */
 .Navbar {
   display: flex;
@@ -11,7 +13,8 @@
   margin-right: 15px;
   padding: 0 13px;
   font-size: 22px;
-  background-color: rgb(229 229 229);
+  background-color: $lightText;
+  // @@TODO: Will be fixed later
   font-family: Roboto;
   height: 100%;
   display: flex;
@@ -44,9 +47,9 @@
 .rc-slider-handle:active,
 .rc-slider-handle:focus,
 .rc-slider-handle:hover {
-  background-color: #2C5364;
+  background-color: $secondaryDark;
   outline: none;
-  border: 2px solid #2C5364;
+  border: 2px solid $secondaryDark;
   box-shadow: none;
   width: 13px;
   height: 13px;
@@ -61,7 +64,7 @@
 
   & div,
   & svg {
-    color: rgb(229 229 229);    
+    color: $lightText;    
   }
 
   & fieldset {

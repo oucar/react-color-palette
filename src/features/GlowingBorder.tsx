@@ -9,7 +9,6 @@ import {
 } from "framer-motion";
 import { useRef } from "react";
 import { cn } from "../app/utils/cn";
-import "./styles/GlowingBorder.scss";
 
 export function GlowingBorder({
   borderRadius = "1.75rem",
