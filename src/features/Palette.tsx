@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ColorBox from "./ColorBox";
 import "rc-slider/assets/index.css";
 import "./styles/Palette.scss";

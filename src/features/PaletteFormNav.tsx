@@ -7,8 +7,7 @@ import "./styles/PaletteFormNav.scss";
 import PaletteMetaForm from "./PaletteMetaForm";
 import { AddToPhotos, Clear } from "@mui/icons-material";
 import { GlowingBorder } from "./GlowingBorder";
-import {Palette} from "../app/models/palette";
-
+import { Palette } from "../app/models/palette";
 
 interface PaletteFormNavProps {
   palettes: any[];
@@ -38,11 +37,7 @@ const PaletteFormNav: React.FC<PaletteFormNavProps> = (props) => {
 
   return (
     <Box className="PaletteFormNav">
-      <AppBar
-        className="PFN-appBar"
-        position="fixed"
-        color="default"
-      >
+      <AppBar className="PFN-appBar" position="fixed" color="default">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -63,8 +58,6 @@ const PaletteFormNav: React.FC<PaletteFormNavProps> = (props) => {
           </Typography>
         </Toolbar>
         <div className="PFNav-navBtns">
-
-
           <Link to="/">
             <IconButton aria-label="back" color="error">
               <Clear />

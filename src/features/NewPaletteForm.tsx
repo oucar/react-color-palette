@@ -12,7 +12,6 @@ import ColorPickerForm from "./ColorPickerForm";
 import { seedColors } from "../app/common/seedColors";
 import { variables } from "../app/common/_variables";
 import { Color } from "../app/models/color";
-import { Palette } from "../app/models/palette";
 
 function NewPaletteForm(props) {
   const defaultProps = {
